@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="Unity-Mirror-学习笔记(Tank) 通过Mirror内置的例子来学习其用法，此为笔记。
+游戏对象以及其使用到的Network组件 NetworkManager 1 NetworkManagerHUD2
+[Telepathy Transport](#Telepathy Transport)
+NetworkManager
+Spawn(GameObject)3 NetworkStartPosition
+UI-Canvas(GameObject)4 TankGameManager(Script)
+Tank(Perfab-GameObject)5 NetWorkIdentity
+NetworkTransform
+Tank(Script)
+各组件以及脚本的用处 NetworkManager
+游戏状态管理 生成管理 场景管理 调试信息 自定义个性化 NetWorkManager是联机的核心组件，可以通过Inspector界面调整具体参数。
+每个Scene只能有一个NetworkManager，多余的会自动删除。由于具有NetworkIdentity组件的对象在加载场景的时候会自动禁用，所以NetworkManager不能放在游戏对象（会有操作）上。
+NetworkManager可以通过派生来根据项目实际需求来修改，自定义化，但如果项目不大，还是保持原样效率会更高。
+Telepathy Transport 在给游戏对象添加NetworkManager的时候会自动加上Telepathy Transport组件。这是一个管理数据传输的组件，如果有需要可以使用自己已有的，Inspector上的NetworkManager-NetworkInfo-Transport上切换即可。
+游戏状态管理 NetworkManager有三种运行模式-分别是：Server（仅服务器），Host（同时作为服务器和客户端），Client（仅客户端）。
+如果使用NetworkManagerHUD2则可直接在游戏运行时选择运行模式，自己调用为最优（一般来说）。
+调用的方法：
+NetworkManager.StartClient();
+NetworkManager.StartServer();
+NetworkManager.StartHost();
+如果脚本没有提前建立存放NetworkManager引用位6的话,只需要直接调用单例7就好。
+以Client模式开启前最好改变一下这个属性：NetworkManager.networkAddress
+也就是IP地址，同一台电脑上测试只需要填写localhost即可，但基本上用的时候肯定不是同一设备，所以可以增加一项功能：开启主机端，会在游戏内展示本机IP。
+C#获取自机IP的语句：
+public string GetLocalIp() { ///获取本地的IP地址 string IP = string.Empty; foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList) { if (_IPAddress.AddressFamily.ToString() == &#34;InterNetwork&#34;) { AddressIP = _IPAddress.ToString(); } } return AddressIP; } 我的做法是弹出输入框让玩家输入主机端玩家提供的IP，玩家多一步操作。">
+    <meta name="generator" content="Hugo 0.125.6">
+    
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/mirror-tank/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/mirror-tank/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="My New Hugo Site">
+  <meta property="og:description" content="Unity-Mirror-学习笔记(Tank) 通过Mirror内置的例子来学习其用法，此为笔记。
+游戏对象以及其使用到的Network组件 NetworkManager 1 NetworkManagerHUD2
+[Telepathy Transport](#Telepathy Transport)
+NetworkManager
+Spawn(GameObject)3 NetworkStartPosition
+UI-Canvas(GameObject)4 TankGameManager(Script)
+Tank(Perfab-GameObject)5 NetWorkIdentity
+NetworkTransform
+Tank(Script)
+各组件以及脚本的用处 NetworkManager
+游戏状态管理 生成管理 场景管理 调试信息 自定义个性化 NetWorkManager是联机的核心组件，可以通过Inspector界面调整具体参数。
+每个Scene只能有一个NetworkManager，多余的会自动删除。由于具有NetworkIdentity组件的对象在加载场景的时候会自动禁用，所以NetworkManager不能放在游戏对象（会有操作）上。
+NetworkManager可以通过派生来根据项目实际需求来修改，自定义化，但如果项目不大，还是保持原样效率会更高。
+Telepathy Transport 在给游戏对象添加NetworkManager的时候会自动加上Telepathy Transport组件。这是一个管理数据传输的组件，如果有需要可以使用自己已有的，Inspector上的NetworkManager-NetworkInfo-Transport上切换即可。
+游戏状态管理 NetworkManager有三种运行模式-分别是：Server（仅服务器），Host（同时作为服务器和客户端），Client（仅客户端）。
+如果使用NetworkManagerHUD2则可直接在游戏运行时选择运行模式，自己调用为最优（一般来说）。
+调用的方法：
+NetworkManager.StartClient();
+NetworkManager.StartServer();
+NetworkManager.StartHost();
+如果脚本没有提前建立存放NetworkManager引用位6的话,只需要直接调用单例7就好。
+以Client模式开启前最好改变一下这个属性：NetworkManager.networkAddress
+也就是IP地址，同一台电脑上测试只需要填写localhost即可，但基本上用的时候肯定不是同一设备，所以可以增加一项功能：开启主机端，会在游戏内展示本机IP。
+C#获取自机IP的语句：
+public string GetLocalIp() { ///获取本地的IP地址 string IP = string.Empty; foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList) { if (_IPAddress.AddressFamily.ToString() == &#34;InterNetwork&#34;) { AddressIP = _IPAddress.ToString(); } } return AddressIP; } 我的做法是弹出输入框让玩家输入主机端玩家提供的IP，玩家多一步操作。">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+
+  <meta itemprop="name" content="My New Hugo Site">
+  <meta itemprop="description" content="Unity-Mirror-学习笔记(Tank) 通过Mirror内置的例子来学习其用法，此为笔记。
+游戏对象以及其使用到的Network组件 NetworkManager 1 NetworkManagerHUD2
+[Telepathy Transport](#Telepathy Transport)
+NetworkManager
+Spawn(GameObject)3 NetworkStartPosition
+UI-Canvas(GameObject)4 TankGameManager(Script)
+Tank(Perfab-GameObject)5 NetWorkIdentity
+NetworkTransform
+Tank(Script)
+各组件以及脚本的用处 NetworkManager
+游戏状态管理 生成管理 场景管理 调试信息 自定义个性化 NetWorkManager是联机的核心组件，可以通过Inspector界面调整具体参数。
+每个Scene只能有一个NetworkManager，多余的会自动删除。由于具有NetworkIdentity组件的对象在加载场景的时候会自动禁用，所以NetworkManager不能放在游戏对象（会有操作）上。
+NetworkManager可以通过派生来根据项目实际需求来修改，自定义化，但如果项目不大，还是保持原样效率会更高。
+Telepathy Transport 在给游戏对象添加NetworkManager的时候会自动加上Telepathy Transport组件。这是一个管理数据传输的组件，如果有需要可以使用自己已有的，Inspector上的NetworkManager-NetworkInfo-Transport上切换即可。
+游戏状态管理 NetworkManager有三种运行模式-分别是：Server（仅服务器），Host（同时作为服务器和客户端），Client（仅客户端）。
+如果使用NetworkManagerHUD2则可直接在游戏运行时选择运行模式，自己调用为最优（一般来说）。
+调用的方法：
+NetworkManager.StartClient();
+NetworkManager.StartServer();
+NetworkManager.StartHost();
+如果脚本没有提前建立存放NetworkManager引用位6的话,只需要直接调用单例7就好。
+以Client模式开启前最好改变一下这个属性：NetworkManager.networkAddress
+也就是IP地址，同一台电脑上测试只需要填写localhost即可，但基本上用的时候肯定不是同一设备，所以可以增加一项功能：开启主机端，会在游戏内展示本机IP。
+C#获取自机IP的语句：
+public string GetLocalIp() { ///获取本地的IP地址 string IP = string.Empty; foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList) { if (_IPAddress.AddressFamily.ToString() == &#34;InterNetwork&#34;) { AddressIP = _IPAddress.ToString(); } } return AddressIP; } 我的做法是弹出输入框让玩家输入主机端玩家提供的IP，玩家多一步操作。">
+  <meta itemprop="wordCount" content="163"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="">
+<meta name="twitter:description" content="Unity-Mirror-学习笔记(Tank) 通过Mirror内置的例子来学习其用法，此为笔记。
+游戏对象以及其使用到的Network组件 NetworkManager 1 NetworkManagerHUD2
+[Telepathy Transport](#Telepathy Transport)
+NetworkManager
+Spawn(GameObject)3 NetworkStartPosition
+UI-Canvas(GameObject)4 TankGameManager(Script)
+Tank(Perfab-GameObject)5 NetWorkIdentity
+NetworkTransform
+Tank(Script)
+各组件以及脚本的用处 NetworkManager
+游戏状态管理 生成管理 场景管理 调试信息 自定义个性化 NetWorkManager是联机的核心组件，可以通过Inspector界面调整具体参数。
+每个Scene只能有一个NetworkManager，多余的会自动删除。由于具有NetworkIdentity组件的对象在加载场景的时候会自动禁用，所以NetworkManager不能放在游戏对象（会有操作）上。
+NetworkManager可以通过派生来根据项目实际需求来修改，自定义化，但如果项目不大，还是保持原样效率会更高。
+Telepathy Transport 在给游戏对象添加NetworkManager的时候会自动加上Telepathy Transport组件。这是一个管理数据传输的组件，如果有需要可以使用自己已有的，Inspector上的NetworkManager-NetworkInfo-Transport上切换即可。
+游戏状态管理 NetworkManager有三种运行模式-分别是：Server（仅服务器），Host（同时作为服务器和客户端），Client（仅客户端）。
+如果使用NetworkManagerHUD2则可直接在游戏运行时选择运行模式，自己调用为最优（一般来说）。
+调用的方法：
+NetworkManager.StartClient();
+NetworkManager.StartServer();
+NetworkManager.StartHost();
+如果脚本没有提前建立存放NetworkManager引用位6的话,只需要直接调用单例7就好。
+以Client模式开启前最好改变一下这个属性：NetworkManager.networkAddress
+也就是IP地址，同一台电脑上测试只需要填写localhost即可，但基本上用的时候肯定不是同一设备，所以可以增加一项功能：开启主机端，会在游戏内展示本机IP。
+C#获取自机IP的语句：
+public string GetLocalIp() { ///获取本地的IP地址 string IP = string.Empty; foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList) { if (_IPAddress.AddressFamily.ToString() == &#34;InterNetwork&#34;) { AddressIP = _IPAddress.ToString(); } } return AddressIP; } 我的做法是弹出输入框让玩家输入主机端玩家提供的IP，玩家多一步操作。">
+
+	
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        My New Hugo Site
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+<div class="ananke-socials">
+  
+</div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+    <main class="pb7" role="main">
+      
+  <div class="flex-l mt2 mw8 center">
+    <article class="center cf pv5 ph3 ph4-ns mw7">
+      <header>
+        <h1 class="f1">
+          
+        </h1>
+      </header>
+      <div class="nested-copy-line-height lh-copy f4 nested-links mid-gray">
+        <h1 id="unity-mirror-学习笔记tank">Unity-Mirror-学习笔记(Tank)</h1>
+<p>通过Mirror内置的例子来学习其用法，此为笔记。</p>
+<h3 id="游戏对象以及其使用到的network组件">游戏对象以及其使用到的Network组件</h3>
+<hr>
+<ul>
+<li><a href="#networkManager">NetworkManager</a> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<blockquote>
+<p>NetworkManagerHUD<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>[Telepathy Transport](#Telepathy Transport)</p>
+<p>NetworkManager</p>
+</blockquote>
+<ul>
+<li>Spawn(GameObject)<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
+</ul>
+<blockquote>
+<p><a href="#NetworkStartPostition">NetworkStartPosition</a></p>
+</blockquote>
+<ul>
+<li>UI-Canvas(GameObject)<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
+</ul>
+<blockquote>
+<p><a href="#TankGameManager">TankGameManager(Script)</a></p>
+</blockquote>
+<ul>
+<li>Tank(Perfab-GameObject)<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
+</ul>
+<blockquote>
+<p><a href="#NetworkIdentity">NetWorkIdentity</a></p>
+<p><a href="#NetworkTransform">NetworkTransform</a></p>
+<p><a href="#Tank(Script)">Tank(Script)</a></p>
+</blockquote>
+<h3 id="各组件以及脚本的用处">各组件以及脚本的用处</h3>
+<hr>
+<ul>
+<li>
+<p><!-- raw HTML omitted --><strong>NetworkManager</strong><!-- raw HTML omitted --></p>
+<blockquote>
+<ul>
+<li><a href="#%E6%B8%B8%E6%88%8F%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86">游戏状态管理</a></li>
+</ul>
+<ul>
+<li><a href="#%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86">生成管理</a></li>
+<li><a href="#%E5%9C%BA%E6%99%AF%E7%AE%A1%E7%90%86">场景管理</a></li>
+<li>调试信息</li>
+<li>自定义个性化</li>
+</ul>
+</blockquote>
+<p>NetWorkManager是联机的核心组件，可以通过Inspector界面调整具体参数。</p>
+<p>每个Scene只能有一个NetworkManager，多余的会自动删除。由于具有NetworkIdentity组件的对象在加载场景的时候会自动禁用，所以NetworkManager不能放在游戏对象（会有操作）上。</p>
+<p>NetworkManager可以通过派生来根据项目实际需求来修改，自定义化，但如果项目不大，还是保持原样效率会更高。</p>
+<h4 id="span-id--telepathy-transporttelepathy-transportspan"><!-- raw HTML omitted --><em>Telepathy Transport</em><!-- raw HTML omitted --></h4>
+<p>在给游戏对象添加NetworkManager的时候会自动加上Telepathy Transport组件。这是一个管理数据传输的组件，如果有需要可以使用自己已有的，Inspector上的NetworkManager-NetworkInfo-Transport上切换即可。</p>
+<h4 id="span-id---游戏状态管理__游戏状态管理__span"><!-- raw HTML omitted --><strong>游戏状态管理</strong><!-- raw HTML omitted --></h4>
+<p>NetworkManager有三种运行模式-分别是：Server（仅服务器），Host（同时作为服务器和客户端），Client（仅客户端）。</p>
+<p>如果使用NetworkManagerHUD<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>则可直接在游戏运行时选择运行模式，自己调用为最优（一般来说）。</p>
+<p>调用的方法：</p>
+<blockquote>
+<ul>
+<li>
+<p>NetworkManager.StartClient();</p>
+</li>
+<li>
+<p>NetworkManager.StartServer();</p>
+</li>
+<li>
+<p>NetworkManager.StartHost();</p>
+</li>
+</ul>
+</blockquote>
+<p>如果脚本没有提前建立存放NetworkManager引用位<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>的话,只需要直接调用单例<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>就好。</p>
+<p>以Client模式开启前最好改变一下这个属性：NetworkManager.networkAddress</p>
+<p>也就是IP地址，同一台电脑上测试只需要填写localhost即可，但基本上用的时候肯定不是同一设备，所以可以增加一项功能：开启主机端，会在游戏内展示本机IP。</p>
+<p>C#获取自机IP的语句：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c#" data-lang="c#"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">string</span> GetLocalIp()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">///获取本地的IP地址</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">string</span> IP = <span style="color:#66d9ef">string</span>.Empty;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">foreach</span> (IPAddress _IPAddress <span style="color:#66d9ef">in</span> Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (_IPAddress.AddressFamily.ToString() == <span style="color:#e6db74">&#34;InterNetwork&#34;</span>)
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            AddressIP = _IPAddress.ToString();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> AddressIP;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>我的做法是弹出输入框让玩家输入主机端玩家提供的IP，玩家多一步操作。</p>
+<p>流程基本就是：服务端/主机端开启，客户端同一网络下输入IP进入（非局域网联机尚未尝试）</p>
+<h4 id="span-id--生成管理__生成管理__span"><!-- raw HTML omitted --><strong>生成管理</strong><!-- raw HTML omitted --></h4>
+<p>NetworkManager具有管理对象生成的功能（动态生成）。</p>
+<p>如果要自主操作全局玩家的生成，则需要了解NetworkConnection相关知识（当前尚不讨论这一点）</p>
+<p>Spawn Info窗口管理着相关信息：</p>
+<blockquote>
+<p>PlayerPrefab：玩家的预制体（需要有NetworkIdentity）</p>
+<p>AutoCreatePlayer:bool（一般为开启，除非需要自主生成）</p>
+<p>PlayerSpawnMethod:两个属性：</p>
+<ul>
+<li>A：Random：场景上每一个具有NetworkStartPosition的对象随机成为生成点</li>
+<li>B：RoundRobin：从Hierarchy<!-- raw HTML omitted -->从上往下<!-- raw HTML omitted -->每一个具有NetworkStartPosition组件的对象轮流作为生成点</li>
+</ul>
+<p>Rigistered Spawnable Perfabs:</p>
+<p>这是一个列表，存放一些非玩家的需要动态生成的物体，比如子弹，金币奖励等。<strong>注意：这些物体同样需要NetworkIdentity组件</strong></p>
+</blockquote>
+<h5 id="span-id--networkstartpostitionnetworkstartpostitionspan"><!-- raw HTML omitted -->NetworkStartPostition<!-- raw HTML omitted --></h5>
+<p>在这里就要提到NetworkStartPosition，加入这个组件的物体将成为生成点。</p>
+<p>NetworkManager会调用GetStartPostiton()来获取Transform组件。</p>
+<h4 id="span-id--__场景管理__span"><!-- raw HTML omitted --><strong>场景管理</strong><!-- raw HTML omitted --></h4>
+<p>NetworkManager内置联机场景管理功能，一般而言只有两个槽位</p>
+<blockquote>
+<p>Offline Scene</p>
+<p>Online Scene</p>
+</blockquote>
+<p>也就是一个离线场景和一个线上场景。</p>
+<p>启动服务器（Server）或者主机端（Host）的时候会直接加载Online Scene，同时客户端连接后也会加载至Online Scene。</p>
+<p>Offline Scene也直白：客户端和服务端断开连接的时候加载的场景。</p>
+<p>如需要在游戏中切换场景的话，则需要调用ServerChangeScene函数，让当前所有连接的客户端切换至新的Scene。需要切换的场景需要把名字加载进networkSceneName。</p>
+<p>但需要注意：以及开始运行的NetworkManager就别再调用StartHost或者StartClient等的操作了，不然可能会引起奇怪的事情。</p>
+<p>特别是NetworkManager会自动切换线上线下场景，所以NetworkManager在场景之间也要保持不变，不然会掉线。尽可能改设置而不是直接整个NetworkManager改变。</p>
+</li>
+<li>
+<p><!-- raw HTML omitted --> <strong>TankGameManager(Script)</strong><!-- raw HTML omitted --></p>
+<p>这个组件（脚本）是起到类似GM的作用，也就是游戏的管理。</p>
+<p>在这个例子里，玩家的数据是直接由玩家本体存储，也就是Tank脚本内存储以及同步。</p>
+<p>这个GM主要的作用是：更新UI，判定游戏输赢（以UI展示，没有实际用于服务器的判定GM）。</p>
+<p>在这里简单讲一下Mirror实际的效果：</p>
+<p>A,B两个玩家，我们设A为Host，也就是主机端，实际A操作的依然是客户端，只是网络上它也在做服务器做的事而已，B作为客户端加入同一个场景。</p>
+<p>就好像玩遥控车一样，遥控车是玩家预制体，遥控是UI。但是我们彼此在各自的视野里只看得见对手的车，其他都看不见。</p>
+<p>换个角度，我在一个赛道（Scene）里玩遥控车（有UI），还有其他自己会走动的遥控车（无UI），他们在我的Scene只有预制体，只不过他们受“遥控”而已。</p>
+<p>实测之后这个GM有漏洞，漏洞在于假设出现这种在玩家预制体内的__同步数据__:</p>
+<pre tabindex="0"><code>[SyncVar]
+public int PlayerHP;
+</code></pre><p>这些数据都需要由Server端改变，也就是发送指令，由服务端接受指令并执行，客户端是无权修改的。</p>
+<p>如果是Unity内运行，主机端也只能修改自己的数据，对其他加入的玩家的数据的修改是无效的。</p>
+</li>
+<li>
+<p><!-- raw HTML omitted --><strong>NetworkIdentity</strong><!-- raw HTML omitted --></p>
+<p>一个网络认证组件，相当于进入游戏的通行证，有了它，Mirror管理的时候才可以把各个物体区分开来。</p>
+<p>只有一个选项可以勾选，</p>
+<blockquote>
+<p>ServerOnly</p>
+</blockquote>
+<p>如果勾选了的话这个物体只能在服务端生成，客户端是不会生成的，例如局域网游戏的裁判等，这种游戏对象一般来讲客户端只负责接受数据和处理前端，判断输赢则仅从服务端即可，就好像一个隐形的旁观者。（具体没操作过这个Serveronly，可以尝试一下）</p>
+</li>
+<li>
+<p><!-- raw HTML omitted --><strong>NetworkTransform</strong><!-- raw HTML omitted --></p>
+<p>这是一个用于同步位置的组件，可以同步对象的位置移动缩放。</p>
+<p>直白点就是同步Transform的数据</p>
+<p>这里有一个很坑的地方：如果你没有勾选Client Authority这个选项，客户端的位置是不会同步到服务端的，也就是客户端做任何事实际上都是没有效果的。</p>
+<blockquote>
+<p>Client Authority客户端移动权限。</p>
+<p>NetworkTransform组件还可以修改灵敏度Sensitivity，只有一帧内变化超过阈值才会同步。</p>
+<p>SyncMode则可以修改同步的对象，是告诉所有人（Observers观察者），还是只是服务器（Owner私有）</p>
+<p>SyncInterval则是同步频率，以秒为单位，0-2取值。</p>
+</blockquote>
+<p>如果有子对象需要跟着移动，则需要在父对象上添加Network Transform Child，并将Target设置为子物体。</p>
+</li>
+<li>
+<p><!-- raw HTML omitted --><strong>Tank(Script)</strong><!-- raw HTML omitted --></p>
+<p>这是例子中的玩家脚本。在需要网络上使用的对象，其脚本应该继承NetworkBehaviour，使用起来跟MonoBehaviour相差无几。</p>
+<p>这里就存在三种特性：[SyncVar] , [Command] , [ClientRpc]</p>
+<p>[SyncVar]：同步数据。</p>
+<p>刚刚提到过，有这种特性的数据的修改只能从服务端修改，客户端是没有权限修改的，只能读取。</p>
+<p>而怎么修改呢？则要通过有[ServerCallBack],[Server]的方法。</p>
+<p>有这些特性的方法都只会在服务器端执行。</p>
+<p>比如子弹中的碰撞，OnTriggerEnter（），在前面加一个[ServerCallBack]的特性，这个判定则在服务端判定，相当于告诉服务器，要是撞到了就调用这个方法。</p>
+<p>[Server]的方法则直接在服务器执行。</p>
+<p>这些是禁止客户端调用的，那如果客户端发射子弹呢？则需要用到[Command]的特性，有这个特性的方法会告诉服务器我要做这个方法，然后服务器就会帮你做。举个例子：</p>
+<p>我要杀A，我告诉B（服务端）我要用手枪杀A，B就接受我的手枪把A干掉，如果我还要B把手枪还我，则<strong>还我</strong>的这个方法需要有[ClientRpc]的特性，相当于这是客户端接受服务端的反馈并且执行。</p>
+<p>所以杀人要用[Command]，杀完人手枪还我要加[ClientRpc]。</p>
+</li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>联机状态管理组件&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>NetworkManager的GUI版，在场景运行时实时展示的UI，可以直接改变NetworkManager的属性。&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>复活点&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>UI界面&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>玩家预制体-坦克&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>public NetworkManager networkManager;&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>例子:NetworkManager.singleton.StartHost();&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+      </div>
+    </article>
+  </div>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+    &copy;  My New Hugo Site 2024 
+  </a>
+    <div>
+<div class="ananke-socials">
+  
+</div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

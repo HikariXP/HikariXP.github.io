@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/mirror-tank/</loc>
+  </url><url>
+    <loc>http://localhost:1313/testfolder/onlinegameproject/</loc>
+  </url><url>
+    <loc>http://localhost:1313/testfolder/playable%E8%B0%83%E6%9F%A5/</loc>
+  </url><url>
+    <loc>http://localhost:1313/testfolder/protobuf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+  </url><url>
+    <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+  </url><url>
+    <loc>http://localhost:1313/testfolder/</loc>
+  </url>
+</urlset>
