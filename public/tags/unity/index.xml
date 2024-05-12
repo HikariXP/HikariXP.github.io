@@ -6,14 +6,14 @@
     <description>Recent content in Unity on CharSui烧腊店</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Apr 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/unity/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>部署Hugo和使用Stack改版主题</title>
-      <link>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</link>
-      <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</guid>
-      <description>https://www.bilibili.com/video/BV1aJ411t7N6/ GC文章翻译（第三方） https://www.bilibili.com/read/cv3260881/ 物理内存 CPU的内存读取其实很慢，每次都会访问CPU中的Shared Cache再去内存找，也就是核心自己的内存。 台</description>
+      <title>Unity内存管理</title>
+      <link>http://localhost:1313/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sun, 21 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
+      <description>https://www.bilibili.com/video/BV1aJ411t7N6/ https://www.bilibili.com/read/cv3260881/ GC文章翻译（第三方） 物理内存 CPU的内存读取其实很慢，每次都会访问CPU中的Shared Cache再去内存找，也就是核心自己的内存。 台</description>
     </item>
     <item>
       <title>Unity-Mirror学习笔记-Tank</title>

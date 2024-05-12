@@ -6,21 +6,7 @@
         <description>Recent content on CharSui烧腊店</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 12 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>一切的开始</title>
-        <link>http://localhost:1313/2024/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/</link>
-        <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
-        
-        <guid>http://localhost:1313/2024/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/</guid>
-        <description>&lt;img src="http://localhost:1313/2024/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post 一切的开始" /&gt;&lt;p&gt;从小到高中，梦想变了千千万万回：先是科学家做长生不老药，再到造高达可以去和自己喜欢的拍拖，再到只是想赚钱。变太多了还忘了部分了。&lt;/p&gt;
-&lt;p&gt;梦想，目标，一直在变。从万能科学家到仅仅只是赚大钱，不知道这种算不算变得市侩呢。不过，这个不断改变的梦想在高二的某个晚上突然定型了，它变成了一个[可行的目标]。&lt;/p&gt;
-&lt;p&gt;那天晚上，晚自习偷偷听歌(耳机线从衣伸出)，听到了一首&amp;quot;枪神的荣耀&amp;quot;。那是腾讯的一个TPS游戏《枪神纪》的主题曲，仿谁一目了然，但是对于当初还在玩CF的逼而言，算是很新潮很新颖的游戏，毕竟那时候是小学，连Steam都不会上。&lt;/p&gt;
-&lt;p&gt;有幸参与过内测，在内测期间尤其上头，日夜玩。终究随着公测，以及那时候腾讯网游的运营套路，公测后一年后，在日益膨胀的数值和Pay To Win环境中渐渐放弃了。&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;为什么我不自己做一个呢？&amp;quot;，随后命运的内燃机开始燃烧。&lt;/p&gt;
-&lt;p&gt;我必须先承认我很喜欢玩，当然指的是内测的时候。诞生这个念头之后，思考片刻认为这不是痴人说梦，随购入了一本《Java入门》，然后了解到了&amp;quot;引擎&amp;quot;这个东东，再基于我看重跨平台性，所以直接选择了Unity。又买了Unity入门。&lt;/p&gt;
-</description>
-        </item>
-        <item>
+        <lastBuildDate>Thu, 09 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>部署Hugo和使用Stack改版主题</title>
         <link>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</link>
         <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
@@ -65,6 +51,7 @@
 &lt;p&gt;如果你问:&amp;ldquo;那你写这篇笔记来做什么?&amp;rdquo;
 它就是我博客的 &amp;ldquo;Hello World&amp;rdquo;&lt;/p&gt;
 &lt;h1 id=&#34;遇到的问题&#34;&gt;遇到的问题&lt;/h1&gt;
+&lt;h2 id=&#34;1笔记无法加载&#34;&gt;1、笔记无法加载&lt;/h2&gt;
 &lt;p&gt;倒是确实遇到了问题，比如这套主题，需要Markdown笔记具有一些前置信息去提供给主题去显示。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;+++
 author = &amp;quot;CharSui&amp;quot;
@@ -84,6 +71,10 @@ image = &amp;quot;pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg&amp;quot;
 +++
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;第一次用的时候不知道，导致觉得很奇怪，为什么我明明放了笔记却不显示呢？明明上一个主题都可以的。&lt;/p&gt;
+&lt;h2 id=&#34;2无法部署&#34;&gt;2、无法部署&lt;/h2&gt;
+&lt;p&gt;因为是直接套模板，没什么前端知识储备（就是什么都不懂）。第一次替换旧主题的并且提交的时候出现了错误，因为config.yaml的baseurl没有修改为正确的地址。改了就可以了。报错内容是这样的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Environment URL &#39;&#39; is not a valid http(s) URL, so it will not be shown as a link in the workflow graph.
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -251,6 +242,83 @@ Closures and anonymous methods（闭包和匿名函数）
 &lt;p&gt;Unity内使用TPL，跟协程比起来需要注意的地方。
 IO返回倒是可以用异步做，但是协程会轮询。如果轮询没什么消耗没关系，有问题就异步。&lt;/p&gt;
 &lt;p&gt;Unity基本已经停止mono的支持了，以后会转ilruntime，&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Unity多平台开发注意事项</title>
+        <link>http://localhost:1313/2024/unity%E5%A4%9A%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+        <pubDate>Sun, 21 Apr 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/2024/unity%E5%A4%9A%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+        <description>&lt;p&gt;最好使用LTS进行开发。&lt;/p&gt;
+&lt;p&gt;并非所有平台都完美支持所有Unity附带的功能，比如主机端不支持移动端的广告和分析功能。可能还违反服务协议。&lt;/p&gt;
+&lt;p&gt;选择渲染管线，有些平台不支持HDRP，最好使用URP，因为它支持所有平台。&lt;/p&gt;
+&lt;p&gt;对于多平台而言：平台特定的代码，质量设置，后期效果，着色器图形设置等，需要根据平台设置，或者使用SDK。
+多查看文档，特别是SDK的。&lt;/p&gt;
+&lt;p&gt;如果需要iOS平台则需要Mac。&lt;/p&gt;
+&lt;p&gt;对于主机平台，需要向主机平台所属的厂商申请开发者套件。
+了解你要发布的平台，你需要确定使用的硬件有什么限制。有些硬件的要求会严格(垃圾Switch机能？)硬件存储速度，Shader兼容等，CPU架构也有影响。手机则需要注重性能，发热等。
+开发前就应该确认好。减少后期维护成本。&lt;/p&gt;
+&lt;p&gt;当新设备性价比差，价格贵，断货时，旧设备的用户会维持在较高水平。&lt;/p&gt;
+&lt;p&gt;抽象代码库！不同平台的对于某些功能的步骤或许相似，但是实践上会根据设备有较大的差异。有些平台或许还没有某个功能。&lt;/p&gt;
+&lt;p&gt;错误使用API是主机平台上最常见的认证失败原因&lt;/p&gt;
+&lt;p&gt;有些平台不支持Mono，主机平台要求使用IL2CPP，意味着只能用AOT，任何JIT反射，序列化都可能失效。&lt;/p&gt;
+&lt;p&gt;主机平台用ResourcesAPI会大幅增加游戏启动时间。还可能导致认证失败。
+PlayerPrefs也是，最好自己写写入读取实现。&lt;/p&gt;
+&lt;p&gt;最好一开始就用Addressable，管理资产和内存。有些平台对DLC和补丁的大小也有要求。&lt;/p&gt;
+&lt;p&gt;第三方库和插件不一定支持所有平台，因为有些开发者访问不了受到保密协议保护的平台。遇到问题才重写代码会大大延迟你得开发。&lt;/p&gt;
+&lt;p&gt;就算短期内你可能只考虑开发PC和移动端，但是如果游戏火了，需要移植的时候，你还是需要处理多平台的问题。然后你就要大幅重写了。&lt;/p&gt;
+&lt;p&gt;阅读目标硬件文档！
+这不仅影响性能优化，还影响你的认证要求。&lt;/p&gt;
+&lt;p&gt;Editor下跟实际硬件跑是两回事，测试你的功能在目标平台是否可行。
+你用champion主机开发Editor下114514帧，结果构建发布只有14帧，你就寄。定期测试你的游戏（实机），将重点放在最低性能的机子上测。
+比如Unity还支持iOS12，就意味着iPhone 5S仍受支持。所以要买点旧设备来测试。
+从旧设备测，然后建立一个基准，你就知道性能是否慢慢变差了，做性能分析（实机），做性能分析Pro，让所有机子都60FPS跑，&lt;/p&gt;
+&lt;p&gt;不同平台对发布要求有不一样，你需要满足才能发布游戏，你需要开发前就处理。线程锁定，内存占用、随机崩溃死机啥的，
+构建失败是最常见的，有些人都还没测过构建就发布了，当然过不了了。有些平台会有预认证功能会方便很多。&lt;/p&gt;
+&lt;p&gt;即使是VR，也有PCVR，独立VR，主机VR等目标平台，有各种性能要求，你要确保流程避免卡顿，玩家才能玩的舒服。
+不同VR的输入和追踪实现可能大相径庭。&lt;/p&gt;
+&lt;p&gt;在开发初期就具备对目标平台的性能控制，能够让你在开发初期就对性能消耗有所控制，定期检查，初期就达成60FPS。&lt;/p&gt;
+&lt;h1 id=&#34;提出问题&#34;&gt;提出问题&lt;/h1&gt;
+&lt;p&gt;1、对于主机平台，不支持JIT。如果游戏是拥有代码热更功能的项目，是不是意味着需要根据导出的平台去处理程序集？这些平台是不是一点反射都用不了？&lt;/p&gt;
+&lt;p&gt;答：我认为并不是一点反射都用不了，毕竟我现在负责的项目就有设计到Switch。项目中由于旧框架的设计目的，用了大量的反射去处理，没见到有这方面的影响。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>如何设计好的收集系统</title>
+        <link>http://localhost:1313/2023/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E5%A5%BD%E7%9A%84%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/</link>
+        <pubDate>Wed, 14 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/2023/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E5%A5%BD%E7%9A%84%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;p&gt;围绕收集系统而言，想让玩家收集就需要激励他们。而从激励角度，有分&lt;strong&gt;外部激励&lt;/strong&gt;和&lt;strong&gt;内部激励&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;外部激励&#34;&gt;外部激励&lt;/h2&gt;
+&lt;h3 id=&#34;关卡&#34;&gt;关卡&lt;/h3&gt;
+&lt;p&gt;就是机制所需。比如你必须收集x个勾八才能开启下一关。&lt;/p&gt;
+&lt;h3 id=&#34;强化&#34;&gt;强化&lt;/h3&gt;
+&lt;p&gt;你收集3个电池就能获得能力上的升级。&lt;/p&gt;
+&lt;p&gt;或者是新服装、新道具、新武器、新技能、新代币等等。&lt;/p&gt;
+&lt;p&gt;有时候它跟你的角色强度挂钩，有时候又直接影响你通关的难度。&lt;/p&gt;
+&lt;h3 id=&#34;场景&#34;&gt;场景&lt;/h3&gt;
+&lt;p&gt;比如马里奥中，你收集齐全所有收集物后，不仅会解锁一个特殊的场景，还可以以路易吉角色重新游玩，并且是全新的体验。&lt;/p&gt;
+&lt;h3 id=&#34;坏使用场景&#34;&gt;坏使用场景&lt;/h3&gt;
+&lt;p&gt;比如古惑狼4，有些关卡对你拾取、通过次数等有限制，甚至要你收集齐所有箱子，但是每一关也摁藏箱子的同时还有一些场景是无法回头的。&lt;/p&gt;
+&lt;h2 id=&#34;内部奖励&#34;&gt;内部奖励&lt;/h2&gt;
+&lt;p&gt;内在奖励的作用是让玩家出于自己的意愿想要完成的一些目标。&lt;/p&gt;
+&lt;p&gt;收集这些东西意味着一段旅程，而这段旅程本身就是一种奖励。&lt;/p&gt;
+&lt;p&gt;入门级别：在收集到的时候设置一个很酷的声音或者闪光特效。跳舞也行。&lt;/p&gt;
+&lt;p&gt;因为这些手段可以让“收集”变得更加有趣，而令这个过程变得更令人满足。&lt;/p&gt;
+&lt;p&gt;内在奖励关注的是过程。收集品只是最后的点睛之笔。移动冒险相关游戏就比较适用。&lt;/p&gt;
+&lt;p&gt;但是大金刚64那套设计就比较顶尖了。一个地图5种收集物，5个角色只能拿自己能拿的，全收集就要5个角色打同一关5次。&lt;/p&gt;
+&lt;p&gt;宝可梦图鉴还会引导你去全收集，告诉你有哪些你没有见过，大概出现的地方这样。&lt;/p&gt;
+&lt;p&gt;或者可以有类似原神那个宝物罗盘，虽然它也是抄别人的。&lt;/p&gt;
+&lt;p&gt;最好不要产生“大海捞针”的体验。&lt;/p&gt;
+&lt;h1 id=&#34;参考信息&#34;&gt;参考信息&lt;/h1&gt;
+&lt;p&gt;Bilibili:
+&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV13g41157vQ/?spm_id_from=333.337.search-card.all.click&amp;amp;vd_source=eb300db30cd9290bff0034709202b1a2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【中英字幕】如何设计好的收集系统 | Design Doc 设计文档_哔哩哔哩bilibili&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Youtube:
+&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=M03bTkQxVUg&amp;amp;t=138s&amp;amp;ab_channel=DesignDoc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;# Collectibles - How To Make Chores Fun In Games&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>

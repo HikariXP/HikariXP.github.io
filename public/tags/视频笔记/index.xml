@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>视频笔记 on CharSui烧腊店</title>
+    <link>http://localhost:1313/tags/%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 视频笔记 on CharSui烧腊店</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unity多平台开发注意事项</title>
+      <link>http://localhost:1313/2024/unity%E5%A4%9A%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link>
+      <pubDate>Sun, 21 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024/unity%E5%A4%9A%E5%B9%B3%E5%8F%B0%E5%BC%80%E5%8F%91%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid>
+      <description>最好使用LTS进行开发。 并非所有平台都完美支持所有Unity附带的功能，比如主机端不支持移动端的广告和分析功能。可能还违反服务协议。 选择渲染</description>
+    </item>
+  </channel>
+</rss>

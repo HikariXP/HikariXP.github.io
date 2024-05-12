@@ -60,7 +60,7 @@
 </script>
 <div class="container main-container flex 
     <!-- 
-        on-phone--column extended
+        extended
      -->
     on-phone--column extended
 ">
@@ -344,7 +344,7 @@
 
 
                 <time class="article-words">
-                    738字
+                    872字
                 </time>
             </div>
         
@@ -395,6 +395,7 @@
 <p>如果你问:&ldquo;那你写这篇笔记来做什么?&rdquo;
 它就是我博客的 &ldquo;Hello World&rdquo;</p>
 <h1 id="遇到的问题">遇到的问题</h1>
+<h2 id="1笔记无法加载">1、笔记无法加载</h2>
 <p>倒是确实遇到了问题，比如这套主题，需要Markdown笔记具有一些前置信息去提供给主题去显示。</p>
 <pre><code>+++
 author = &quot;CharSui&quot;
@@ -414,6 +415,10 @@ image = &quot;pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg&quot;
 +++
 </code></pre>
 <p>第一次用的时候不知道，导致觉得很奇怪，为什么我明明放了笔记却不显示呢？明明上一个主题都可以的。</p>
+<h2 id="2无法部署">2、无法部署</h2>
+<p>因为是直接套模板，没什么前端知识储备（就是什么都不懂）。第一次替换旧主题的并且提交的时候出现了错误，因为config.yaml的baseurl没有修改为正确的地址。改了就可以了。报错内容是这样的:</p>
+<pre><code>Environment URL '' is not a valid http(s) URL, so it will not be shown as a link in the workflow graph.
+</code></pre>
 
 </section>
 
@@ -521,6 +526,8 @@ image = &quot;pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg&quot;
 
     
 
+    
+
 
 <script>
 (function(u, c) {
@@ -540,7 +547,7 @@ image = &quot;pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg&quot;
             2020 - 
         
         2024 <a href="https://stack-theme-mod.vercel.app/">Example Site</a>·<i class="fas fa-bell"></i> <a id="days">0</a>Days<br>
-      共书写了9.4k字·共 5篇文章</br><span><p>
+      共书写了11k字·共 6篇文章</br><span><p>
     </section>
     
     <section class="powerby">
@@ -665,6 +672,31 @@ document.getElementById('days').innerHTML = number_of_days;
     </form>
         
             
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1笔记无法加载">1、笔记无法加载</a></li>
+    <li><a href="#2无法部署">2、无法部署</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
         
             <section class="widget categories">
         <div class="widget-icon">
@@ -682,11 +714,13 @@ document.getElementById('days').innerHTML = number_of_days;
     <h3 class="widget-title"> </h3>
     <div class="widget-body">
         <div class="category-list">
-            <div class="category-list-item"><a href="http://localhost:1313/categories/unity/" class="category-list-link">unity<span class="category-list-count">3</a>
-            </span></div>
-            <div class="category-list-item"><a href="http://localhost:1313/categories/%E4%BA%BA%E7%94%9F%E7%BB%8F%E5%8E%86/" class="category-list-link">人生经历<span class="category-list-count">1</a>
+            <div class="category-list-item"><a href="http://localhost:1313/categories/unity/" class="category-list-link">unity<span class="category-list-count">4</a>
             </span></div>
             <div class="category-list-item"><a href="http://localhost:1313/categories/%E5%8D%9A%E5%AE%A2/" class="category-list-link">博客<span class="category-list-count">1</a>
+            </span></div>
+            <div class="category-list-item"><a href="http://localhost:1313/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" class="category-list-link">游戏设计<span class="category-list-count">1</a>
+            </span></div>
+            <div class="category-list-item"><a href="http://localhost:1313/categories/%E8%A7%86%E9%A2%91%E7%AC%94%E8%AE%B0/" class="category-list-link">视频笔记<span class="category-list-count">2</a>
             </span></div>
         </div>
     </div>
@@ -721,6 +755,14 @@ document.getElementById('days').innerHTML = number_of_days;
                     </a> 
                 </div>
             <div class="archives-year">
+                    <a href="/archives/#2023">
+                        
+                            <span class="year">2023</span>
+                            <span class="count">1</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
                     <a href="/archives/#2022">
                         
                             <span class="year">2022</span>
@@ -747,7 +789,7 @@ document.getElementById('days').innerHTML = number_of_days;
 
     <div class="tagCloud-tags">
         
-            <a href="/tags/unity/" class="font_size_3">
+            <a href="/tags/unity/" class="font_size_4">
                 Unity
             </a>
         
@@ -763,8 +805,12 @@ document.getElementById('days').innerHTML = number_of_days;
                 Mirror局域网
             </a>
         
-            <a href="/tags/%E4%BA%BA%E7%94%9F%E7%BB%8F%E5%8E%86/" class="font_size_1">
-                人生经历
+            <a href="/tags/%E5%A4%9A%E5%B9%B3%E5%8F%B0/" class="font_size_1">
+                多平台
+            </a>
+        
+            <a href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/" class="font_size_1">
+                游戏设计
             </a>
         
             <a href="/tags/%E8%B8%A9%E5%9D%91/" class="font_size_1">

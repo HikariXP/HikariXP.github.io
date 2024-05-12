@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>游戏设计 on CharSui烧腊店</title>
+    <link>http://localhost:1313/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/</link>
+    <description>Recent content in 游戏设计 on CharSui烧腊店</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何设计好的收集系统</title>
+      <link>http://localhost:1313/2023/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E5%A5%BD%E7%9A%84%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Wed, 14 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2023/%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E5%A5%BD%E7%9A%84%E6%94%B6%E9%9B%86%E7%B3%BB%E7%BB%9F/</guid>
+      <description>围绕收集系统而言，想让玩家收集就需要激励他们。而从激励角度，有分外部激励和内部激励。 外部激励 关卡 就是机制所需。比如你必须收集x个勾八才能开启</description>
+    </item>
+  </channel>
+</rss>

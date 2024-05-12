@@ -7,7 +7,7 @@ tags = [
 	"Unity"
 ]
 categories = [
-"Unity"
+"Unity","视频笔记"
 ]
 series = ["Themes Guide"]
 aliases = ["migrate-from-jekyl"]

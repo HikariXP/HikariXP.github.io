@@ -6,14 +6,14 @@
     <description>Recent content in Posts on CharSui烧腊店</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 09 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 12 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>部署Hugo和使用Stack改版主题</title>
-      <link>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</link>
-      <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</guid>
-      <description>https://www.bilibili.com/video/BV1aJ411t7N6/ GC文章翻译（第三方） https://www.bilibili.com/read/cv3260881/ 物理内存 CPU的内存读取其实很慢，每次都会访问CPU中的Shared Cache再去内存找，也就是核心自己的内存。 台</description>
+      <title>一切的开始</title>
+      <link>http://localhost:1313/2024/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/</link>
+      <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/</guid>
+      <description>从小到高中，梦想变了千千万万回：先是科学家做长生不老药，再到造高达可以去和自己喜欢的拍拖，再到只是想赚钱。变太多了还忘了部分了。 梦想，目标，</description>
     </item>
     <item>
       <title>部署Hugo和使用Stack改版主题</title>
@@ -21,6 +21,13 @@
       <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</guid>
       <description>突然兴致而来，和同事小武聊起来博客就谈到了Hexo，随后和基友毛聊起来又谈到了Hugo。 没有经过什么详细的调查，单纯只是想找一个方便的博客框</description>
+    </item>
+    <item>
+      <title>Unity内存管理</title>
+      <link>http://localhost:1313/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Sun, 21 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
+      <description>https://www.bilibili.com/video/BV1aJ411t7N6/ https://www.bilibili.com/read/cv3260881/ GC文章翻译（第三方） 物理内存 CPU的内存读取其实很慢，每次都会访问CPU中的Shared Cache再去内存找，也就是核心自己的内存。 台</description>
     </item>
     <item>
       <title>Unity-Mirror学习笔记-Tank</title>
@@ -35,13 +42,6 @@
       <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/2022/unity-loadsceneasync%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8D%8F%E7%A8%8B%E9%97%AE%E9%A2%98/</guid>
       <description>出现的问题 如同其他游戏一般，想要在A场景往C场景移动的时候，冒出来一个作为加载场景的B，实现A-&amp;gt;B-&amp;gt;C的效果，但是实测的时候</description>
-    </item>
-    <item>
-      <title>一切的开始</title>
-      <link>http://localhost:1313/1/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/1/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/</guid>
-      <description>从小到高中，梦想变了千千万万回：先是科学家做长生不老药，再到造高达可以去和自己喜欢的拍拖，再到只是想赚钱。变太多了还忘了部分了。 梦想，目标，</description>
     </item>
   </channel>
 </rss>
