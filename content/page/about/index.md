@@ -1,0 +1,23 @@
+---
+title: About Me
+description: 一个想开发游戏赚钱做大做强的逼
+date: '2019-02-28'
+aliases:
+  - about-us
+  - about-hugo
+  - contact
+license: CC BY-NC-ND
+lastmod: '2020-10-09'
+menu:
+    main: 
+        weight: -90
+        params:
+            icon: user
+---
+
+你可以叫我叉烧，常用英文代号是CharSui，取自粤语的叉烧的读音(虽然不一定完全匹配)。
+
+现在写这个About Me的时候，是一个程序逼，每个工作日都被需求拷打。回到家就燃尽睡觉。周六陪女朋友逛街街，周日在家学习或者做游戏或者玩游戏。
+
+哈哈哈哈哈，上线项目不出意外的是 0 。(悲
+

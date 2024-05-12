@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unity on CharSui烧腊店</title>
+    <link>http://localhost:1313/categories/unity/</link>
+    <description>Recent content in Unity on CharSui烧腊店</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/unity/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>部署Hugo和使用Stack改版主题</title>
+      <link>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</link>
+      <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</guid>
+      <description>https://www.bilibili.com/video/BV1aJ411t7N6/ GC文章翻译（第三方） https://www.bilibili.com/read/cv3260881/ 物理内存 CPU的内存读取其实很慢，每次都会访问CPU中的Shared Cache再去内存找，也就是核心自己的内存。 台</description>
+    </item>
+    <item>
+      <title>Unity-Mirror学习笔记-Tank</title>
+      <link>http://localhost:1313/2022/unity-mirror%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-tank/</link>
+      <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2022/unity-mirror%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-tank/</guid>
+      <description>游戏对象以及其使用到的Network组件 NetworkManager 1 NetworkManagerHUD2 [Telepathy Transport](#Telepathy Transport) NetworkManager Spawn(GameObject)3 NetworkStartPosition UI-Canvas(GameObject)4 TankGameManager(Script) Tank(Perfab-GameObject)5 NetWorkIdentity NetworkTransform Tank(Script) 各组件以及脚本的用处 NetworkManager 游戏状态管理 生成管理 场景管理 调试信息 自定义个性化</description>
+    </item>
+    <item>
+      <title>Unity-LoadSceneAsync出现的协程问题</title>
+      <link>http://localhost:1313/2022/unity-loadsceneasync%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8D%8F%E7%A8%8B%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/2022/unity-loadsceneasync%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8D%8F%E7%A8%8B%E9%97%AE%E9%A2%98/</guid>
+      <description>出现的问题 如同其他游戏一般，想要在A场景往C场景移动的时候，冒出来一个作为加载场景的B，实现A-&amp;gt;B-&amp;gt;C的效果，但是实测的时候</description>
+    </item>
+  </channel>
+</rss>

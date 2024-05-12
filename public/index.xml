@@ -1,39 +1,517 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>My New Hugo Site</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on My New Hugo Site</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title></title>
-      <link>http://localhost:1313/mirror-tank/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/mirror-tank/</guid>
-      <description>Unity-Mirror-学习笔记(Tank) 通过Mirror内置的例子来学习其用法，此为笔记。&#xA;游戏对象以及其使用到的Network组件 NetworkManager 1 NetworkManagerHUD2&#xA;[Telepathy Transport](#Telepathy Transport)&#xA;NetworkManager&#xA;Spawn(GameObject)3 NetworkStartPosition&#xA;UI-Canvas(GameObject)4 TankGameManager(Script)&#xA;Tank(Perfab-GameObject)5 NetWorkIdentity&#xA;NetworkTransform&#xA;Tank(Script)&#xA;各组件以及脚本的用处 NetworkManager&#xA;游戏状态管理 生成管理 场景管理 调试信息 自定义个性化 NetWorkManager是联机的核心组件，可以通过Inspector界面调整具体参数。&#xA;每个Scene只能有一个NetworkManager，多余的会自动删除。由于具有NetworkIdentity组件的对象在加载场景的时候会自动禁用，所以NetworkManager不能放在游戏对象（会有操作）上。&#xA;NetworkManager可以通过派生来根据项目实际需求来修改，自定义化，但如果项目不大，还是保持原样效率会更高。&#xA;Telepathy Transport 在给游戏对象添加NetworkManager的时候会自动加上Telepathy Transport组件。这是一个管理数据传输的组件，如果有需要可以使用自己已有的，Inspector上的NetworkManager-NetworkInfo-Transport上切换即可。&#xA;游戏状态管理 NetworkManager有三种运行模式-分别是：Server（仅服务器），Host（同时作为服务器和客户端），Client（仅客户端）。&#xA;如果使用NetworkManagerHUD2则可直接在游戏运行时选择运行模式，自己调用为最优（一般来说）。&#xA;调用的方法：&#xA;NetworkManager.StartClient();&#xA;NetworkManager.StartServer();&#xA;NetworkManager.StartHost();&#xA;如果脚本没有提前建立存放NetworkManager引用位6的话,只需要直接调用单例7就好。&#xA;以Client模式开启前最好改变一下这个属性：NetworkManager.networkAddress&#xA;也就是IP地址，同一台电脑上测试只需要填写localhost即可，但基本上用的时候肯定不是同一设备，所以可以增加一项功能：开启主机端，会在游戏内展示本机IP。&#xA;C#获取自机IP的语句：&#xA;public string GetLocalIp() { ///获取本地的IP地址 string IP = string.Empty; foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList) { if (_IPAddress.AddressFamily.ToString() == &amp;#34;InterNetwork&amp;#34;) { AddressIP = _IPAddress.ToString(); } } return AddressIP; } 我的做法是弹出输入框让玩家输入主机端玩家提供的IP，玩家多一步操作。</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/testfolder/onlinegameproject/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/testfolder/onlinegameproject/</guid>
-      <description>OnlineGameProject_Ver0.1 纯C#&#xA;用户注册登录。&#xA;定期用户信息存档。&#xA;Socket TCP协议&#xA;金融交易系统，根据特定算法每天给出，或每（小时/天）给出数值。&#xA;解密，手绘风+彩色描边+机能风+赛博背景故事。&#xA;全景地图：存在着一次次的线索，观察细节部分揭露事实。&#xA;假设1：双金币资源不共用，金融系统用点数，其他用货币，玩家的最基本战力基础就算服务器矩阵的算力，租用服务器可以以低廉的价格用到好的服务器但是限时且如果做了一些攻击性事件的时候容易被查。自己买会很贵，而且要交电费（服务器本身、空调），还有房费等，但毕竟难寻找源头且受限小。服务器矩阵以及算法做成可自定义，增加可玩性。&#xA;UserAccount:&#xA;玩法：&#xA;解密&#xA;金融系统&#xA;日常运营小店铺（要考虑）&#xA;AcrylicServer需要具备的功能：&#xA;接受与发送信息：&#xA;监听特定端口（12345） 群发信息 对用户数据进行管理 (进化方向：xml or json)&#xA;对Msg类进行序列化处理&#xA;Msg信息包含：&#xA;日期DateTime 调用的方法 string 数字 内容 string 暂定方法编号：string&#xA;ToServer：&#xA;1001 登录请求&#xA;1002 注册请求&#xA;1003 金融账号登录请求&#xA;1004 金融账号注册请求&#xA;ToClient:&#xA;10011 登录成功&#xA;10010 登录失败&#xA;10021 注册成功&#xA;10020 注册失败&#xA;10031 金融账号登录成功&#xA;10030 金融账号登录失败&#xA;10041 金融账号注册成功&#xA;10040 金融账号注册失败&#xA;2021.3.19/开发日志：&#xA;需要修改序列化方法，改为json，再测试注册登录等信息。&#xA;2021.3.20/开发日志：&#xA;问题不在于序列化，在于连接服务器的时候服务器会发送一则不规范的信息，已修改。&#xA;服务器暂时正常，客户端的Client脚本需要优化，脱离MonoBehaviour(Unity内部好屑)&#xA;2021.3.21/开发日志:&#xA;暂时解决所有登录问题，获取用户数据正常。但曾经服务器端出现过&#xA;Additional text encountered after finished reading JSON content</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/testfolder/playable%E8%B0%83%E6%9F%A5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/testfolder/playable%E8%B0%83%E6%9F%A5/</guid>
-      <description>开发者手册&#xA;官方描述-Offical Define Playables API 提供一种通过组织和评估树状结构（称为 PlayableGraph）中的数据源来创建工具、效果或其他游戏机制的方法。PlayableGraph 允许您混合、融合和修改多个数据源，并通过单个输出播放它们。&#xA;Playables API 支持动画、音频和脚本。Playables API 还提供通过脚本与动画系统和音频系统进行交互的能力。&#xA;尽管 Playables API 目前仅限于动画、音频和脚本，但它是一种通用 API，最终可供视频和其他系统使用。&#xA;Playable核心播放项需要继承IPlayable、而输出项需要继承IPlayableOutput&#xA;核心播放类：&#xA;核心输出类：&#xA;Playable是所有可播放项的基本类型，所以所有播放项变种都可以在需要的时候隐式转换为Playable&#xA;PlayableOutput也是如此，是所有可播放项输出的基本类型，定义了基本方法。&#xA;Playable 和 PlayableOutput 未暴露大量方法。但“PlayableExtensions”和“PlayableOutputExtensions”静态类提供了扩展方法。&#xA;所有非抽象可播放项都有一个公有静态方法 Create()，该方法创建相应类型的可播放项。“Create()”方法始终将 PlayableGraph 作为其第一个参数，该图拥有新创建的可播放项。某些类型的可播放项可能需要其他参数。非抽象可播放项输出还会暴露 Create() 方法。&#xA;有效的可播放项输出应链接到可播放项。如果可播放项输出未链接到可播放项，则可播放项输出不执行任何操作。要将可播放项输出链接到可播放项，请使用 PlayableOutput.SetSourcePlayable() 方法。对于该特定可播放项输出，链接的可播放项充当可播放项树的根。&#xA;流程 PlayGraph是可以播放的，通过PlayableGraph.Create(string GraphName)获取。&#xA;然后可以将一些Playable节点添加到PlayableGraph激活Graph的.Play()&#xA;ScriptPlayable : Playable一个可播放的行为，我们通过ScriptPlayable&amp;lt;T\&amp;gt;.Create(graphThatItShouldGoTo);来创建&#xA;随后创建一个继承于PlayableBehaviour的自定义Playable行为就行，把这个继承PlayableBehaivour的组件放入上述的T中即可。&#xA;这些都是动态的，也就是写进代码，运行的时候生成的。所以你也只能在运行的时候才能从PlayableGraphVisualizer里面看到。&#xA;保存 PlayableAsset正是为此设计，其继承于ScriptableObject，你可以通过PlayableAsset.CreatePlayable(graph,gameObject);来直接加载。&#xA;常用方法 要将两个可播放项连接在一起，请使用 PlayableGraph.Connect() 方法。请注意，某些可播放项不能有输入。&#xA;使用 PlayableGraph.Create() 静态方法来创建 PlayableGraph。&#xA;使用 PlayableGraph.Play() 方法来播放 PlayableGraph。&#xA;使用 PlayableGraph.Stop() 方法来停止播放 PlayableGraph。&#xA;使用 PlayableGraph.Evaluate() 方法来评估 PlayableGraph 在特定时间的状态。&#xA;使用 PlayableGraph.Destroy() 方法来手动销毁 PlayableGraph。此方法会自动销毁 PlayableGraph 创建的所有可播放项和可播放项输出。必须手动调用此销毁方法来销毁 PlayableGraph，否则 Unity 会发出一条错误消息。</description>
-    </item>
-    <item>
-      <title></title>
-      <link>http://localhost:1313/testfolder/protobuf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/testfolder/protobuf%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-      <description>Protobuf 定义 协议缓冲区提供了一种语言中立、平台中立、可扩展的机制，用于以向前兼容和向后兼容的方式序列化结构化数据。它类似于 JSON，只是它更小更快，并且生成本地语言绑定。&#xA;基本流程:&#xA;根据自定义数据类型简历.proto：Protocol Buffers文件&#xA;根据需要使用的平台，使用ProtoBuf编译器将定义好的.proto文件编译生成对应平台的库。&#xA;在编程软件类调用第二步生成的库是实现序列化。&#xA;命令行操作:&#xA;protoc protoFile.proto --csharp_out=targetDir 中文参考教材</description>
-    </item>
-  </channel>
+    <channel>
+        <title>CharSui烧腊店</title>
+        <link>http://localhost:1313/</link>
+        <description>Recent content on CharSui烧腊店</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 12 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>一切的开始</title>
+        <link>http://localhost:1313/2024/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/</link>
+        <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/2024/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/</guid>
+        <description>&lt;img src="http://localhost:1313/2024/%E4%B8%80%E5%88%87%E7%9A%84%E5%BC%80%E5%A7%8B/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post 一切的开始" /&gt;&lt;p&gt;从小到高中，梦想变了千千万万回：先是科学家做长生不老药，再到造高达可以去和自己喜欢的拍拖，再到只是想赚钱。变太多了还忘了部分了。&lt;/p&gt;
+&lt;p&gt;梦想，目标，一直在变。从万能科学家到仅仅只是赚大钱，不知道这种算不算变得市侩呢。不过，这个不断改变的梦想在高二的某个晚上突然定型了，它变成了一个[可行的目标]。&lt;/p&gt;
+&lt;p&gt;那天晚上，晚自习偷偷听歌(耳机线从衣伸出)，听到了一首&amp;quot;枪神的荣耀&amp;quot;。那是腾讯的一个TPS游戏《枪神纪》的主题曲，仿谁一目了然，但是对于当初还在玩CF的逼而言，算是很新潮很新颖的游戏，毕竟那时候是小学，连Steam都不会上。&lt;/p&gt;
+&lt;p&gt;有幸参与过内测，在内测期间尤其上头，日夜玩。终究随着公测，以及那时候腾讯网游的运营套路，公测后一年后，在日益膨胀的数值和Pay To Win环境中渐渐放弃了。&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;为什么我不自己做一个呢？&amp;quot;，随后命运的内燃机开始燃烧。&lt;/p&gt;
+&lt;p&gt;我必须先承认我很喜欢玩，当然指的是内测的时候。诞生这个念头之后，思考片刻认为这不是痴人说梦，随购入了一本《Java入门》，然后了解到了&amp;quot;引擎&amp;quot;这个东东，再基于我看重跨平台性，所以直接选择了Unity。又买了Unity入门。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>部署Hugo和使用Stack改版主题</title>
+        <link>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</link>
+        <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/</guid>
+        <description>&lt;img src="http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post 部署Hugo和使用Stack改版主题" /&gt;&lt;p&gt;突然兴致而来，和同事小武聊起来博客就谈到了Hexo，随后和基友毛聊起来又谈到了Hugo。
+没有经过什么详细的调查，单纯只是想找一个方便的博客框架，有不错的外观就行，将精力集中在写笔记留档上，于是随缘用上了Hugo。&lt;/p&gt;
+&lt;p&gt;一开始甚至没留意到Stack主题(即使排的很前)，后来在配置主题上废了一整个晚上也没搞懂怎么配置，文档也没看懂，因为没有任何前端知识储备，挫败感很强。&lt;/p&gt;
+&lt;p&gt;之后就一边遇到问题一边谷歌搜解决方案，效果不太好，其他人似乎没有遇到我那么多问题。但搜到了一篇博客
+&lt;a class=&#34;link&#34; href=&#34;https://blog.reincarnatey.net/2023/build-hugo-blog-with-stack-mod/#%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E5%8D%9A%E5%AE%A2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;建站技术 | 使用 Hugo+Stack 简单搭建一个博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 216; 
+			flex-basis: 519px&#34;
+	&gt;
+	&lt;a href=&#34;http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/Snipaste_2024-05-09_23-11-29.png&#34; data-size=&#34;1096x506&#34;&gt;
+		&lt;img src=&#34;http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/Snipaste_2024-05-09_23-11-29.png&#34;
+			width=&#34;1096&#34;
+			height=&#34;506&#34;
+			srcset=&#34;http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/Snipaste_2024-05-09_23-11-29_hub7d4195fa8bf9d9de9d57de79b49bad2_120258_480x0_resize_box_3.png 480w, http://localhost:1313/2024/%E9%83%A8%E7%BD%B2hugo%E5%92%8C%E4%BD%BF%E7%94%A8stack%E6%94%B9%E7%89%88%E4%B8%BB%E9%A2%98/Snipaste_2024-05-09_23-11-29_hub7d4195fa8bf9d9de9d57de79b49bad2_120258_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			&gt;
+	&lt;/a&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;原谅我没有深看，因为昨天的配置失败让急于求成，但浅看发现:&amp;ldquo;好像比原装Stack要更加清晰和好用?&amp;quot;，于是便立即前往大佬的GitHub上下载。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Mantyke/Hugo-stack-theme-mod&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Mantyke/Hugo-stack-theme-mod&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;由于刚刚的那篇博客已经说了怎么搭建了，我也没什么前端知识，一个臭Unity开发的，就不浪费时间了再讲那部分了。甚至部署也有非常多的博客可以搜得到。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/hosting-and-deployment/hosting-on-github/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Hugo官方GithubPages部署教程&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;总流程是:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先使用Hugo创建一堆需要的基础文件&lt;/li&gt;
+&lt;li&gt;新建一个Github的仓库，并设置为Pages&lt;/li&gt;
+&lt;li&gt;将第1步生成的内容放入此仓库，并做好设置&lt;/li&gt;
+&lt;li&gt;Enjoy your blog&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果你问:&amp;ldquo;那你写这篇笔记来做什么?&amp;rdquo;
+它就是我博客的 &amp;ldquo;Hello World&amp;rdquo;&lt;/p&gt;
+&lt;h1 id=&#34;遇到的问题&#34;&gt;遇到的问题&lt;/h1&gt;
+&lt;p&gt;倒是确实遇到了问题，比如这套主题，需要Markdown笔记具有一些前置信息去提供给主题去显示。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+++
+author = &amp;quot;CharSui&amp;quot;
+title = &amp;quot;部署Hugo和使用Stack改版主题&amp;quot;
+date = &amp;quot;2024-05-09&amp;quot;
+description = &amp;quot;记录第一次部署博客以及使用主题遇到的障碍&amp;quot;
+tags = [
+	&amp;quot;Hugo&amp;quot;,&amp;quot;Github-Pages&amp;quot;
+]
+categories = [
+&amp;quot;博客&amp;quot;
+]
+series = [&amp;quot;Themes Guide&amp;quot;]
+aliases = [&amp;quot;migrate-from-jekyl&amp;quot;]
+image = &amp;quot;pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg&amp;quot;
+
++++
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;第一次用的时候不知道，导致觉得很奇怪，为什么我明明放了笔记却不显示呢？明明上一个主题都可以的。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Unity内存管理</title>
+        <link>http://localhost:1313/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</link>
+        <pubDate>Sun, 21 Apr 2024 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/</guid>
+        <description>&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/video/BV1aJ411t7N6/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.bilibili.com/video/BV1aJ411t7N6/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.bilibili.com/read/cv3260881/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.bilibili.com/read/cv3260881/&lt;/a&gt; GC文章翻译（第三方）&lt;/p&gt;
+&lt;h3 id=&#34;物理内存&#34;&gt;物理内存&lt;/h3&gt;
+&lt;p&gt;CPU的内存读取其实很慢，每次都会访问CPU中的Shared Cache再去内存找，也就是核心自己的内存。
+台式设备和移动设备内存架构差异大：没有独显，没有显卡，CPU板上面积更小，缓存级数更少，大小更小。
+所以有时候Android的报错溢出不是内存，是显存爆炸了。&lt;/p&gt;
+&lt;h3 id=&#34;虚拟内存&#34;&gt;虚拟内存&lt;/h3&gt;
+&lt;p&gt;内存交换（放到硬盘上的内存）移动设备的IO也很慢，移动设备的内存交换性能也有消耗，硬盘读写寿命也更少。
+iOS可以进行内存压缩，但是Android没有（）
+iOS能把不用的程序占用的内存可以先压缩，也是存在内存里面。&lt;/p&gt;
+&lt;h3 id=&#34;内存寻址范围&#34;&gt;内存寻址范围&lt;/h3&gt;
+&lt;p&gt;32位和64位讲的是计算器运算位数而不是MCU位数，MemoryControlUnit。&lt;/p&gt;
+&lt;h3 id=&#34;android内存管理&#34;&gt;Android内存管理&lt;/h3&gt;
+&lt;p&gt;Android基于Linux，4K一个Page，Page是最基本的内存单位
+内存杀手 - Low Memory Killer&lt;/p&gt;
+&lt;p&gt;4K Per page
+回收和分配都是以page为单位
+用户态和内核态区分。内核态内存，用户态是严格不许访问的。&lt;/p&gt;
+&lt;p&gt;AKA Lmk  - low memory killer
+按照软件优先度杀软件，按理来说可以把Wifi功能都给你杀了。
+App原地重启都有可能。壁纸都给你杀掉。然后你手机就重启了。&lt;/p&gt;
+&lt;h3 id=&#34;内存指标&#34;&gt;内存指标&lt;/h3&gt;
+&lt;p&gt;Resident Set Size（RSS）
+当前APP调用的所有内存，RSS算上所有公共库的内存，也就是你的插件也算在你的APP的PSS。&lt;/p&gt;
+&lt;p&gt;Proportional Set Size（PSS）
+如果公共库有其他APP用，那就是平均分到每个APP上。&lt;/p&gt;
+&lt;p&gt;Unique Set Size（USS）
+USS是只有你自己用的，纯粹只有你自己申请的。&lt;/p&gt;
+&lt;p&gt;例子：Procrank
+可以列出所有内存使用信息。
+如果PSS很高，USS很低，那就很可能你是被背锅了。一般平台用的是PSS检查。&lt;/p&gt;
+&lt;h3 id=&#34;unity内存管理&#34;&gt;Unity内存管理&lt;/h3&gt;
+&lt;p&gt;Unity是C++引擎，底层代码完全由C++所写，每一行。
+通过Wrapper提供给用户API。所以所有API都是在[.Bindings]里面放的。
+用户代码仍会转换为Cpp代码(il2cpp)
+VM仍然存在。&lt;/p&gt;
+&lt;p&gt;用il2cpp之后，几乎没有纯正的C#在跑。有了VM跨平台会更加方便。&lt;/p&gt;
+&lt;p&gt;按分配方式分为
+NativeMemory和ManagedMemory，在Editor和Runtime是不同的。
+不同不只是说，统计数据不一样，是分配方式都不一样。&lt;/p&gt;
+&lt;p&gt;Asset在Runtime不加载不放进内存，在Editor会全部加载。（演讲者：巨型项目见过加载一礼拜的）
+2019.3推出AssetPipeline2.0，会加载基础的，后面的拓展的才会加载，详细可以自己搜搜。&lt;/p&gt;
+&lt;p&gt;Unity内存按照管理者可以分为：&lt;strong&gt;引擎管理内存&lt;/strong&gt;、&lt;strong&gt;用户管理内存&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id=&#34;引擎内存&#34;&gt;引擎内存&lt;/h4&gt;
+&lt;p&gt;引擎自己调用请求用的，一般开发者不需要触碰。&lt;/p&gt;
+&lt;h4 id=&#34;用户管理内存&#34;&gt;用户管理内存&lt;/h4&gt;
+&lt;p&gt;用户写的寄的代码就会导致很容易爆炸，确切需要关心的。&lt;/p&gt;
+&lt;p&gt;Unity检测不到的内存：用户分配的native内存，比如用户自己写的C++插件，这个Unity检查不到，还有Lua，Lua是自己管理的。&lt;/p&gt;
+&lt;h3 id=&#34;unity-native-memory管理&#34;&gt;Unity Native Memory管理&lt;/h3&gt;
+&lt;p&gt;Allocator与memory lable，Unity重载了几乎所有的内存分配符，比如alloc或者new。所以每个申请内存的操作都需要一个额外的&amp;quot;memory lable&amp;quot;的参数。标记着申请的内存应该放到哪一块内存池里面。
+Allocator会根据memory lable分配到对应的池，每个池单独跟踪。
+不明白（?_?）&lt;/p&gt;
+&lt;h4 id=&#34;最佳实践&#34;&gt;最佳实践&lt;/h4&gt;
+&lt;h5 id=&#34;scene&#34;&gt;Scene&lt;/h5&gt;
+&lt;p&gt;C++引擎，所有实体都会反应在C++里面。不会反应在托管堆。
+我们构建一个GO的时候，底层会建立一个到多个的GO来存储这个GO的信息，所以场景中存在多个GO的时候，Native内存就会显著上升。
+很多UnityNative内存大量生成的时候，去检查Scene，经常就是这个问题。&lt;/p&gt;
+&lt;h5 id=&#34;audio&#34;&gt;Audio&lt;/h5&gt;
+&lt;p&gt;DSP buffer，是可以设置几档位的，是声音的缓冲。
+填充太大了，声音大小没那么大，就会延迟。
+如果太小了，会经常向CPU发请求，导致CPU压力上升。&lt;/p&gt;
+&lt;h5 id=&#34;forcetomono&#34;&gt;ForceToMono&lt;/h5&gt;
+&lt;p&gt;音效师为了声音效果，将声音设置为双通道，但很多游戏音效实际是单声道也没有任何影响的（比如UI音效）。意味着一个1m的声音变成了2m，不仅影响包体还影响内存。
+强制单声道。&lt;/p&gt;
+&lt;h5 id=&#34;format&#34;&gt;Format&lt;/h5&gt;
+&lt;p&gt;不同平台会有不同的Format支持，比如ios一般会推荐MP3,安卓hrbrs？这是什么？猜测是Vorbis（Ogg，Mkv）。
+对于MP3，ios是有硬件支持的，速度会更好（Android没有）&lt;/p&gt;
+&lt;h5 id=&#34;compression-format&#34;&gt;Compression Format&lt;/h5&gt;
+&lt;p&gt;音频在游戏中是压缩的还是怎么样。&lt;/p&gt;
+&lt;h5 id=&#34;code-size&#34;&gt;Code Size&lt;/h5&gt;
+&lt;p&gt;模板泛型乱用会导致影响打包速度以及Code Size，比如一个模板函数有4、5个泛型参数，结果导出一个Cpp 25m。
+所有Class和template，最后都会展开，如果你一直排列组合，那么最后就会得到所有的排列组合，不重复。代码是一样的，但是类型不一样。IL2CPP就会给你展开。&lt;/p&gt;
+&lt;h5 id=&#34;assetbundle&#34;&gt;AssetBundle&lt;/h5&gt;
+&lt;h6 id=&#34;typetree&#34;&gt;TypeTree&lt;/h6&gt;
+&lt;p&gt;当前版本用到了哪些变量和对应数据类型，反序列化就根据TypeTree记录的内容。
+没有就用默认值序列化。Build AssetBundle，当你确认同一个版本的Unity版本打出来的时候，TypeTree完全可以关掉，内存减少，包大小减少，build和运行时会变快。
+每次序列化的时候，如果发现需要TypeTree序列化的时候，要序列化两次，先序列化TypeTree再序列化本体。&lt;/p&gt;
+&lt;h6 id=&#34;lz4&#34;&gt;Lz4&lt;/h6&gt;
+&lt;p&gt;Unity主推，效率快，压缩比率比Lzma差30%，速度快10倍左右。&lt;/p&gt;
+&lt;h6 id=&#34;lzma&#34;&gt;Lzma&lt;/h6&gt;
+&lt;p&gt;基本不用，解压和读取速度都慢，而且会占用大量内存，它不是用什么解压，而是全解压。chunkbase。Lzma不基于ChunkBase（那Lz4呢？），基于ChunkBase的访问旧的资源可以引用缓存减少内存消耗。&lt;/p&gt;
+&lt;h6 id=&#34;size--count&#34;&gt;Size &amp;amp; count&lt;/h6&gt;
+&lt;p&gt;一个Ab包多大。
+AB包基本都分两部分，头文件和实际文件。如果你每个资源都打一个包，那你就多了很多没用的头文件了。
+官方推荐1m-2m一个AssetBundle，现在5g网络好很多就可以放宽考虑。&lt;/p&gt;
+&lt;h5 id=&#34;resources文件夹&#34;&gt;Resources文件夹&lt;/h5&gt;
+&lt;p&gt;这个文件夹在打包的时候会生成一个R-B Tree，红黑树，帮助resources检索资源，如果Resources文件夹很大，你得RBTree就很大，会持续存在内存之中，从App打开就加载，这个红黑树没加载完游戏不会启动。
+基本只在Debug的时候用。&lt;/p&gt;
+&lt;h5 id=&#34;texture&#34;&gt;Texture&lt;/h5&gt;
+&lt;h6 id=&#34;upload-buffer&#34;&gt;upload buffer&lt;/h6&gt;
+&lt;p&gt;填满多大向GPU发送push一次&lt;/p&gt;
+&lt;h6 id=&#34;rw-read--write&#34;&gt;r/w: read / write&lt;/h6&gt;
+&lt;p&gt;Texture没必要就不需要开。
+正常流程Texture，读进内存，解析完了，放到uploadbuffer上传了就会从内存delete掉。
+你开了r/w就不会卸载了，就在你显存和内存都有一份。&lt;/p&gt;
+&lt;h6 id=&#34;mipmaps&#34;&gt;MipMaps&lt;/h6&gt;
+&lt;p&gt;UI没必要开。&lt;/p&gt;
+&lt;h5 id=&#34;mesh&#34;&gt;Mesh&lt;/h5&gt;
+&lt;h6 id=&#34;rw&#34;&gt;r/w&lt;/h6&gt;
+&lt;p&gt;同上&lt;/p&gt;
+&lt;h6 id=&#34;compression&#34;&gt;compression&lt;/h6&gt;
+&lt;p&gt;有些版本开了不如不开，这个需要自己注意。&lt;/p&gt;
+&lt;h5 id=&#34;assets&#34;&gt;Assets&lt;/h5&gt;
+&lt;h3 id=&#34;unity-managed-memory&#34;&gt;Unity Managed Memory&lt;/h3&gt;
+&lt;p&gt;Unity托管内存&lt;/p&gt;
+&lt;h4 id=&#34;vm内存池&#34;&gt;VM内存池&lt;/h4&gt;
+&lt;p&gt;Mono虚拟机的内存池&lt;/p&gt;
+&lt;h5 id=&#34;vm会返还内存给os吗&#34;&gt;VM会返还内存给OS吗？&lt;/h5&gt;
+&lt;p&gt;会&lt;/p&gt;
+&lt;h5 id=&#34;返还条件&#34;&gt;返还条件&lt;/h5&gt;
+&lt;p&gt;当一个block连续6次GC没有被访问到，才会返还给系统，这种情况基本看不到，尤其是MonoRuntime的时候，ILRuntime可能稍微还会多一点机会。&lt;/p&gt;
+&lt;h4 id=&#34;gc机制&#34;&gt;GC机制&lt;/h4&gt;
+&lt;p&gt;GC不会把内存返还给系统
+GC是一种机制，而这种机制有很多种不同的具体实现。
+Untiy在用的叫Boehm-Demers-Weiser：&lt;a class=&#34;link&#34; href=&#34;https://www.hboehm.info/gc/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;相位裂缝&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Unity在用的Boehm是不分代的，有些GC会划分大中小块，还有不常用块，Unity没有，纯堆一起（快），而且它是非压缩式的GC，不会对内存进行重新调整位置。&lt;/p&gt;
+&lt;h5 id=&#34;下一代gc&#34;&gt;下一代GC&lt;/h5&gt;
+&lt;h6 id=&#34;incremental-gc渐进式gc&#34;&gt;Incremental GC（渐进式GC）&lt;/h6&gt;
+&lt;p&gt;解决的是主线程卡顿的问题，现在的GC会暂停主线程，遍历所有的GC Memory，决定多少被GC掉。
+IGC分帧做了，比如分成10帧去做，总体时间没变，但是可以改善卡顿情况。&lt;/p&gt;
+&lt;h6 id=&#34;sgen或者升级boehm&#34;&gt;SGen或者升级Boehm&lt;/h6&gt;
+&lt;p&gt;SGen很先进，分代的。策略速度快&lt;/p&gt;
+&lt;h6 id=&#34;il2cpp&#34;&gt;IL2CPP&lt;/h6&gt;
+&lt;p&gt;Unity重新写的，升级版的Boehm&lt;/p&gt;
+&lt;h5 id=&#34;gc机制考量&#34;&gt;GC机制考量&lt;/h5&gt;
+&lt;p&gt;Throughput（回收能力）
+一次回收回收多少内存&lt;/p&gt;
+&lt;p&gt;PauseTimes（暂停时长）
+进行内存回收的时候对主线程的影响多大&lt;/p&gt;
+&lt;p&gt;Fragmentation（碎片化）
+回收内存之后，会对整体内存池碎片化贡献量&lt;/p&gt;
+&lt;p&gt;MutatorOverhead（额外消耗）
+统计，标记之类的消耗&lt;/p&gt;
+&lt;p&gt;Scalability（可拓展性）
+扩展到多核多线程会不会有bug&lt;/p&gt;
+&lt;p&gt;Protability（可移植性）
+不同平台是否可以使用&lt;/p&gt;
+&lt;h5 id=&#34;内存碎片化&#34;&gt;内存碎片化&lt;/h5&gt;
+&lt;p&gt;就是因为不会挤掉间隔，间隔不够大就无法分配了。
+这就被严重碎片化了。
+如果进行高密度内存加载操作，先加载大内存，再加载小内存。
+这部分内存不算内存泄漏，这叫Zombie Memory，无用内存，没有释放。它没有丢失一直都在，但是你也不用，它就占着这个位置。&lt;/p&gt;
+&lt;h4 id=&#34;最佳实践-1&#34;&gt;最佳实践&lt;/h4&gt;
+&lt;p&gt;Don&amp;rsquo;t Null it，but Destroy it（用Destroy而不是设null）
+Class VS Struct看雨松
+Pool In Pool高频使用的小部件，自己创建内存池，自己重用
+Closures and anonymous methods（闭包和匿名函数）
+所有的匿名和闭包最后会被IL生成翻译全都是new一个class，实际是一个class
+里面所有函数和变量，里面所有new的东西都要占内存。&lt;/p&gt;
+&lt;p&gt;Coroutines协程，只要没释放掉，所用的内存会一直存在，所有的变量。局部变量也是。用就生成，不用就去除掉。协程不是线程&lt;/p&gt;
+&lt;p&gt;Configurations（配置表）&lt;/p&gt;
+&lt;p&gt;Singleton慎用，C++年代就是万恶资源，扔进去就不管，全在内存里。&lt;/p&gt;
+&lt;p&gt;SetActive有GC，SetActive实际上会干很多工作，可以看源代码，有很多初始化的工作，比如子UI的递归情况。当你UISetActive很卡的时候，可以试试把UI放到屏幕外，这样就没有SetActive了。&lt;/p&gt;
+&lt;p&gt;Unity内使用TPL，跟协程比起来需要注意的地方。
+IO返回倒是可以用异步做，但是协程会轮询。如果轮询没什么消耗没关系，有问题就异步。&lt;/p&gt;
+&lt;p&gt;Unity基本已经停止mono的支持了，以后会转ilruntime，&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Unity-Mirror学习笔记-Tank</title>
+        <link>http://localhost:1313/2022/unity-mirror%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-tank/</link>
+        <pubDate>Tue, 18 Oct 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/2022/unity-mirror%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-tank/</guid>
+        <description>&lt;h3 id=&#34;游戏对象以及其使用到的network组件&#34;&gt;游戏对象以及其使用到的Network组件&lt;/h3&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#networkManager&#34; &gt;NetworkManager&lt;/a&gt; &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NetworkManagerHUD&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;[Telepathy Transport](#Telepathy Transport)&lt;/p&gt;
+&lt;p&gt;NetworkManager&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Spawn(GameObject)&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#NetworkStartPostition&#34; &gt;NetworkStartPosition&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;UI-Canvas(GameObject)&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#TankGameManager&#34; &gt;TankGameManager(Script)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Tank(Perfab-GameObject)&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#NetworkIdentity&#34; &gt;NetWorkIdentity&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#NetworkTransform&#34; &gt;NetworkTransform&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;#Tank%28Script%29&#34; &gt;Tank(Script)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;各组件以及脚本的用处&#34;&gt;各组件以及脚本的用处&lt;/h3&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span id = &#34;networkManager&#34;&gt;&lt;strong&gt;NetworkManager&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#%e6%b8%b8%e6%88%8f%e7%8a%b6%e6%80%81%e7%ae%a1%e7%90%86&#34; &gt;游戏状态管理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#%e7%94%9f%e6%88%90%e7%ae%a1%e7%90%86&#34; &gt;生成管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;#%e5%9c%ba%e6%99%af%e7%ae%a1%e7%90%86&#34; &gt;场景管理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;调试信息&lt;/li&gt;
+&lt;li&gt;自定义个性化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;NetWorkManager是联机的核心组件，可以通过Inspector界面调整具体参数。&lt;/p&gt;
+&lt;p&gt;每个Scene只能有一个NetworkManager，多余的会自动删除。由于具有NetworkIdentity组件的对象在加载场景的时候会自动禁用，所以NetworkManager不能放在游戏对象（会有操作）上。&lt;/p&gt;
+&lt;p&gt;NetworkManager可以通过派生来根据项目实际需求来修改，自定义化，但如果项目不大，还是保持原样效率会更高。&lt;/p&gt;
+&lt;h4 id=&#34;span-id--telepathy-transporttelepathy-transportspan&#34;&gt;&lt;span id = &#34;Telepathy Transport&#34;&gt;&lt;em&gt;Telepathy Transport&lt;/em&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;在给游戏对象添加NetworkManager的时候会自动加上Telepathy Transport组件。这是一个管理数据传输的组件，如果有需要可以使用自己已有的，Inspector上的NetworkManager-NetworkInfo-Transport上切换即可。&lt;/p&gt;
+&lt;h4 id=&#34;span-id---游戏状态管理__游戏状态管理__span&#34;&gt;&lt;span id  = &#34;游戏状态管理&#34;&gt;&lt;strong&gt;游戏状态管理&lt;/strong&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;NetworkManager有三种运行模式-分别是：Server（仅服务器），Host（同时作为服务器和客户端），Client（仅客户端）。&lt;/p&gt;
+&lt;p&gt;如果使用NetworkManagerHUD&lt;sup id=&#34;fnref1:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;则可直接在游戏运行时选择运行模式，自己调用为最优（一般来说）。&lt;/p&gt;
+&lt;p&gt;调用的方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;NetworkManager.StartClient();&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NetworkManager.StartServer();&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NetworkManager.StartHost();&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果脚本没有提前建立存放NetworkManager引用位&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt;的话,只需要直接调用单例&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;就好。&lt;/p&gt;
+&lt;p&gt;以Client模式开启前最好改变一下这个属性：NetworkManager.networkAddress&lt;/p&gt;
+&lt;p&gt;也就是IP地址，同一台电脑上测试只需要填写localhost即可，但基本上用的时候肯定不是同一设备，所以可以增加一项功能：开启主机端，会在游戏内展示本机IP。&lt;/p&gt;
+&lt;p&gt;C#获取自机IP的语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;public string GetLocalIp()
+{
+    ///获取本地的IP地址
+    string IP = string.Empty;
+    foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+    {
+        if (_IPAddress.AddressFamily.ToString() == &amp;quot;InterNetwork&amp;quot;)
+        {
+            AddressIP = _IPAddress.ToString();
+        }
+    }
+    return AddressIP;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我的做法是弹出输入框让玩家输入主机端玩家提供的IP，玩家多一步操作。&lt;/p&gt;
+&lt;p&gt;流程基本就是：服务端/主机端开启，客户端同一网络下输入IP进入（非局域网联机尚未尝试）&lt;/p&gt;
+&lt;h4 id=&#34;span-id--生成管理__生成管理__span&#34;&gt;&lt;span id = &#34;生成管理&#34;&gt;&lt;strong&gt;生成管理&lt;/strong&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;NetworkManager具有管理对象生成的功能（动态生成）。&lt;/p&gt;
+&lt;p&gt;如果要自主操作全局玩家的生成，则需要了解NetworkConnection相关知识（当前尚不讨论这一点）&lt;/p&gt;
+&lt;p&gt;Spawn Info窗口管理着相关信息：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PlayerPrefab：玩家的预制体（需要有NetworkIdentity）&lt;/p&gt;
+&lt;p&gt;AutoCreatePlayer:bool（一般为开启，除非需要自主生成）&lt;/p&gt;
+&lt;p&gt;PlayerSpawnMethod:两个属性：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A：Random：场景上每一个具有NetworkStartPosition的对象随机成为生成点&lt;/li&gt;
+&lt;li&gt;B：RoundRobin：从Hierarchy&lt;u&gt;从上往下&lt;/u&gt;每一个具有NetworkStartPosition组件的对象轮流作为生成点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Rigistered Spawnable Perfabs:&lt;/p&gt;
+&lt;p&gt;这是一个列表，存放一些非玩家的需要动态生成的物体，比如子弹，金币奖励等。&lt;strong&gt;注意：这些物体同样需要NetworkIdentity组件&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;span-id--networkstartpostitionnetworkstartpostitionspan&#34;&gt;&lt;span id = &#34;NetworkStartPostition&#34;&gt;NetworkStartPostition&lt;/span&gt;&lt;/h5&gt;
+&lt;p&gt;在这里就要提到NetworkStartPosition，加入这个组件的物体将成为生成点。&lt;/p&gt;
+&lt;p&gt;NetworkManager会调用GetStartPostiton()来获取Transform组件。&lt;/p&gt;
+&lt;h4 id=&#34;span-id--__场景管理__span&#34;&gt;&lt;span id = &#34;&#34;&gt;&lt;strong&gt;场景管理&lt;/strong&gt;&lt;/span&gt;&lt;/h4&gt;
+&lt;p&gt;NetworkManager内置联机场景管理功能，一般而言只有两个槽位&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Offline Scene&lt;/p&gt;
+&lt;p&gt;Online Scene&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;也就是一个离线场景和一个线上场景。&lt;/p&gt;
+&lt;p&gt;启动服务器（Server）或者主机端（Host）的时候会直接加载Online Scene，同时客户端连接后也会加载至Online Scene。&lt;/p&gt;
+&lt;p&gt;Offline Scene也直白：客户端和服务端断开连接的时候加载的场景。&lt;/p&gt;
+&lt;p&gt;如需要在游戏中切换场景的话，则需要调用ServerChangeScene函数，让当前所有连接的客户端切换至新的Scene。需要切换的场景需要把名字加载进networkSceneName。&lt;/p&gt;
+&lt;p&gt;但需要注意：以及开始运行的NetworkManager就别再调用StartHost或者StartClient等的操作了，不然可能会引起奇怪的事情。&lt;/p&gt;
+&lt;p&gt;特别是NetworkManager会自动切换线上线下场景，所以NetworkManager在场景之间也要保持不变，不然会掉线。尽可能改设置而不是直接整个NetworkManager改变。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span id = &#34;TankGameManager&#34;&gt; &lt;strong&gt;TankGameManager(Script)&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;这个组件（脚本）是起到类似GM的作用，也就是游戏的管理。&lt;/p&gt;
+&lt;p&gt;在这个例子里，玩家的数据是直接由玩家本体存储，也就是Tank脚本内存储以及同步。&lt;/p&gt;
+&lt;p&gt;这个GM主要的作用是：更新UI，判定游戏输赢（以UI展示，没有实际用于服务器的判定GM）。&lt;/p&gt;
+&lt;p&gt;在这里简单讲一下Mirror实际的效果：&lt;/p&gt;
+&lt;p&gt;A,B两个玩家，我们设A为Host，也就是主机端，实际A操作的依然是客户端，只是网络上它也在做服务器做的事而已，B作为客户端加入同一个场景。&lt;/p&gt;
+&lt;p&gt;就好像玩遥控车一样，遥控车是玩家预制体，遥控是UI。但是我们彼此在各自的视野里只看得见对手的车，其他都看不见。&lt;/p&gt;
+&lt;p&gt;换个角度，我在一个赛道（Scene）里玩遥控车（有UI），还有其他自己会走动的遥控车（无UI），他们在我的Scene只有预制体，只不过他们受“遥控”而已。&lt;/p&gt;
+&lt;p&gt;实测之后这个GM有漏洞，漏洞在于假设出现这种在玩家预制体内的__同步数据__:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[SyncVar]
+public int PlayerHP;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这些数据都需要由Server端改变，也就是发送指令，由服务端接受指令并执行，客户端是无权修改的。&lt;/p&gt;
+&lt;p&gt;如果是Unity内运行，主机端也只能修改自己的数据，对其他加入的玩家的数据的修改是无效的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span id = &#34;NetworkIdentity&#34;&gt;&lt;strong&gt;NetworkIdentity&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;一个网络认证组件，相当于进入游戏的通行证，有了它，Mirror管理的时候才可以把各个物体区分开来。&lt;/p&gt;
+&lt;p&gt;只有一个选项可以勾选，&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ServerOnly&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果勾选了的话这个物体只能在服务端生成，客户端是不会生成的，例如局域网游戏的裁判等，这种游戏对象一般来讲客户端只负责接受数据和处理前端，判断输赢则仅从服务端即可，就好像一个隐形的旁观者。（具体没操作过这个Serveronly，可以尝试一下）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span id = &#34;NetworkTransform&#34;&gt;&lt;strong&gt;NetworkTransform&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;这是一个用于同步位置的组件，可以同步对象的位置移动缩放。&lt;/p&gt;
+&lt;p&gt;直白点就是同步Transform的数据&lt;/p&gt;
+&lt;p&gt;这里有一个很坑的地方：如果你没有勾选Client Authority这个选项，客户端的位置是不会同步到服务端的，也就是客户端做任何事实际上都是没有效果的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Client Authority客户端移动权限。&lt;/p&gt;
+&lt;p&gt;NetworkTransform组件还可以修改灵敏度Sensitivity，只有一帧内变化超过阈值才会同步。&lt;/p&gt;
+&lt;p&gt;SyncMode则可以修改同步的对象，是告诉所有人（Observers观察者），还是只是服务器（Owner私有）&lt;/p&gt;
+&lt;p&gt;SyncInterval则是同步频率，以秒为单位，0-2取值。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果有子对象需要跟着移动，则需要在父对象上添加Network Transform Child，并将Target设置为子物体。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;span id = &#34;Tank(Script)&#34;&gt;&lt;strong&gt;Tank(Script)&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;这是例子中的玩家脚本。在需要网络上使用的对象，其脚本应该继承NetworkBehaviour，使用起来跟MonoBehaviour相差无几。&lt;/p&gt;
+&lt;p&gt;这里就存在三种特性：[SyncVar] , [Command] , [ClientRpc]&lt;/p&gt;
+&lt;p&gt;[SyncVar]：同步数据。&lt;/p&gt;
+&lt;p&gt;刚刚提到过，有这种特性的数据的修改只能从服务端修改，客户端是没有权限修改的，只能读取。&lt;/p&gt;
+&lt;p&gt;而怎么修改呢？则要通过有[ServerCallBack],[Server]的方法。&lt;/p&gt;
+&lt;p&gt;有这些特性的方法都只会在服务器端执行。&lt;/p&gt;
+&lt;p&gt;比如子弹中的碰撞，OnTriggerEnter（），在前面加一个[ServerCallBack]的特性，这个判定则在服务端判定，相当于告诉服务器，要是撞到了就调用这个方法。&lt;/p&gt;
+&lt;p&gt;[Server]的方法则直接在服务器执行。&lt;/p&gt;
+&lt;p&gt;这些是禁止客户端调用的，那如果客户端发射子弹呢？则需要用到[Command]的特性，有这个特性的方法会告诉服务器我要做这个方法，然后服务器就会帮你做。举个例子：&lt;/p&gt;
+&lt;p&gt;我要杀A，我告诉B（服务端）我要用手枪杀A，B就接受我的手枪把A干掉，如果我还要B把手枪还我，则&lt;strong&gt;还我&lt;/strong&gt;的这个方法需要有[ClientRpc]的特性，相当于这是客户端接受服务端的反馈并且执行。&lt;/p&gt;
+&lt;p&gt;所以杀人要用[Command]，杀完人手枪还我要加[ClientRpc]。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;联机状态管理组件&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;NetworkManager的GUI版，在场景运行时实时展示的UI，可以直接改变NetworkManager的属性。&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref1:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;复活点&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
+&lt;p&gt;UI界面&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;
+&lt;p&gt;玩家预制体-坦克&amp;#160;&lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:6&#34;&gt;
+&lt;p&gt;public NetworkManager networkManager;&amp;#160;&lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:7&#34;&gt;
+&lt;p&gt;例子:NetworkManager.singleton.StartHost();&amp;#160;&lt;a href=&#34;#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        </item>
+        <item>
+        <title>Unity-LoadSceneAsync出现的协程问题</title>
+        <link>http://localhost:1313/2022/unity-loadsceneasync%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8D%8F%E7%A8%8B%E9%97%AE%E9%A2%98/</link>
+        <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/2022/unity-loadsceneasync%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8D%8F%E7%A8%8B%E9%97%AE%E9%A2%98/</guid>
+        <description>&lt;h2 id=&#34;出现的问题&#34;&gt;出现的问题&lt;/h2&gt;
+&lt;p&gt;如同其他游戏一般，想要在A场景往C场景移动的时候，冒出来一个作为加载场景的B，实现A-&amp;gt;B-&amp;gt;C的效果，但是实测的时候会出现问题，有但不限于：&lt;/p&gt;
+&lt;p&gt;A、如果C场景太少内容，B没机会出来就直接加载C了，即使已经禁止了allowSceneActivation依然会加载。&lt;/p&gt;
+&lt;p&gt;B、异步进度一直为零。&lt;/p&gt;
+&lt;h2 id=&#34;分析问题&#34;&gt;分析问题&lt;/h2&gt;
+&lt;p&gt;Unity单次载入场景只能为一个，如果顺序错误似乎会造成程序认为在同时加载B和C（不确定的原因）。&lt;/p&gt;
+&lt;p&gt;加载B的途中，即使B的内容很少可以瞬间加载，但是脚本动作更快，在B加载完之前C就加载完了，跳过了这一步的同时也造成即使allowSceneActivation为False也可以载入。&lt;/p&gt;
+&lt;h2 id=&#34;问题解决方案&#34;&gt;问题解决方案&lt;/h2&gt;
+&lt;p&gt;在输入载入作为Loading场景的B后，把后面的代码延迟一小会，目前测试延迟0.1s也可以，没测试过延迟一帧，但是如果出现问题的确是因为第二个原因，那么延迟一帧不一定稳定，延迟0.1s既不影响体验也可以保证稳定性。&lt;/p&gt;
+&lt;p&gt;一下是代码内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;    IEnumerator LoadScene_IEnumerator()
+    {
+        time = 0;
+        SceneManager.LoadScene(&amp;quot;Load&amp;quot;);
+        yield return new 			WaitForSecondsRealtime(0.1f);
+        asyncOperation = null;
+        asyncOperation =         SceneManager.LoadSceneAsync(SceneName);
+        asyncOperation.allowSceneActivation = false;
+        Debug.Log(&amp;quot;Now Loading: &amp;quot;+ SceneName);
+        while (!asyncOperation.isDone)
+        {
+            // Check if the load has finished
+            if (asyncOperation.progress &amp;gt;= 0.9f)
+            {
+                //Wait to you press the space key to activate the Scene
+                if (time &amp;gt;= LeastTimeNeedWait)
+                {
+                    WaitToClick = true;
+                    if (Input.anyKey)
+                    {
+                        asyncOperation.allowSceneActivation = true;
+                        WaitToClick = false;
+                        asyncOperation = null;
+                        StopCoroutine(LoadScene_IEnumerator());
+                    }
+                }
+            }
+            yield return null;
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;协程中的While请记得添加yield return，不然会导致Unity崩溃，不强行关闭内存占用会一直上升。&lt;/p&gt;
+&lt;p&gt;曾经出现这个问题，疑惑了两三天，上网搜索无果只能不断尝试。&lt;/p&gt;
+&lt;p&gt;愿能为出现这个问题的人提供帮助。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

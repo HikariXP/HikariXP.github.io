@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='记录第一次部署博客以及使用主题遇到的障碍'><title>Unity内存管理</title>
+
+<link rel='canonical' href='http://localhost:1313/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/'>
+
+<link rel="stylesheet" href="/scss/style.min.46208cabd58e8bcef0cfb7d7ea6b561adcca3b91dd1fc6657493a44f03c5db75.css"><meta property='og:title' content='Unity内存管理'>
+<meta property='og:description' content='记录第一次部署博客以及使用主题遇到的障碍'>
+<meta property='og:url' content='http://localhost:1313/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/'>
+<meta property='og:site_name' content='CharSui烧腊店'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Unity' /><meta property='article:published_time' content='2024-04-21T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-04-21T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="Unity内存管理">
+<meta name="twitter:description" content="记录第一次部署博客以及使用主题遇到的障碍">
+  
+
+<style>
+    :root {
+        --article-font-family: "Noto Serif SC", var(--base-font-family);
+    }
+</style>
+
+<script> 
+		(function () {
+		    const customFont = document.createElement('link');
+		    customFont.href = "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;700&display=swap"; 
+		    customFont.type = "text/css";
+		    customFont.rel = "stylesheet";
+		
+		    document.head.appendChild(customFont);
+		}());
+</script>
+
+    </head>
+    <body class="
+    article-page
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    <!-- 
+        extended
+     -->
+    on-phone--column extended
+">
+    
+<div id="article-toolbar">
+    <a href="http://localhost:1313/" class="back-home">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+        <span>Back</span>
+    </a>
+</div>
+    <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hue1a84dc1e92491b7135d4d00afbef4ac_8664_300x0_resize_box_3.png" width="300"
+                            height="320" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <h1 class="site-name"><a href="/">CharSui烧腊店</a></h1>
+        <h2 class="site-description">多说多做，燃烧自己</h2><ol class="social-menu">
+                
+                    <li>
+                        <a 
+                            href='https://github.com/HikariXP'
+                            target="_blank"
+                            title="a-GitHub"
+                        >
+                            
+                            
+                                <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1715265512072" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5561" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32"><path d="M251.008 795.861333c-12.8-8.533333-23.808-19.413333-36.693333-34.816a2146.986667 2146.986667 0 0 1-19.882667-24.704c-19.754667-24.533333-32.213333-35.84-45.098667-40.490666a42.666667 42.666667 0 0 1 28.842667-80.341334c32.085333 11.52 53.802667 31.36 83.072 67.754667-4.010667-4.992 14.506667 18.218667 18.474667 22.997333 8.106667 9.685333 14.08 15.573333 18.773333 18.688 8.704 5.845333 25.045333 8.362667 49.066667 5.973334 0.981333-16.298667 4.010667-32.128 8.618666-46.72C229.546667 653.226667 157.866667 571.562667 157.866667 411.306667c0-52.906667 15.786667-100.522667 45.141333-140.458667-9.301333-38.144-7.893333-84.266667 12.885333-136.192a42.666667 42.666667 0 0 1 26.88-24.832c3.456-1.024 5.418667-1.493333 8.874667-2.005333 34.261333-5.248 82.645333 7.253333 145.706667 46.762666A500.522667 500.522667 0 0 1 512 141.44c38.912 0 77.568 4.437333 114.517333 13.141333 63.018667-39.808 111.488-52.309333 146.005334-46.762666 3.626667 0.554667 6.698667 1.28 9.301333 2.133333a42.666667 42.666667 0 0 1 26.282667 24.746667c20.778667 51.882667 22.186667 98.005333 12.885333 136.106666 29.482667 39.936 45.141333 87.253333 45.141333 140.501334 0 160.298667-71.424 241.706667-198.058666 272.725333 5.333333 17.706667 8.106667 37.504 8.106666 58.88a12820.992 12820.992 0 0 1-0.512 115.882667 42.666667 42.666667 0 0 1-0.810666 83.541333c-48.597333 9.728-84.608-22.698667-84.608-65.066667l0.085333-19.029333 0.213333-30.08c0.213333-30.208 0.298667-57.088 0.298667-85.248 0-29.738667-7.808-49.152-18.133333-58.026667-28.202667-24.32-13.909333-70.613333 23.04-74.752 126.592-14.208 185.045333-63.232 185.045333-198.826666 0-40.746667-13.312-74.410667-38.954667-102.570667a42.666667 42.666667 0 0 1-8.106666-44.586667c7.082667-17.664 10.112-40.832 4.096-68.864l-0.426667 0.128c-20.949333 5.930667-47.36 18.773333-79.274667 40.490667a42.666667 42.666667 0 0 1-35.541333 5.76A410.709333 410.709333 0 0 0 512 226.773333c-37.973333 0-75.605333 5.077333-110.592 14.933334a42.666667 42.666667 0 0 1-35.413333-5.717334c-32.085333-21.632-58.624-34.432-79.701334-40.405333-6.144 27.861333-3.114667 50.944 3.925334 68.565333a42.666667 42.666667 0 0 1-8.064 44.586667C256.682667 336.64 243.2 370.944 243.2 411.306667c0 135.338667 58.496 184.661333 184.405333 198.826666 36.906667 4.138667 51.242667 50.218667 23.210667 74.581334-8.192 7.168-18.304 31.232-18.304 58.197333v134.4c0 42.069333-35.626667 73.6-83.626667 65.194667a42.666667 42.666667 0 0 1-1.706666-83.712v-42.24c-38.826667 2.602667-70.912-3.754667-96.170667-20.693334z" p-id="5562" fill="#515151"></path></svg>
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a 
+                            href='https://space.bilibili.com/6270922'
+                            target="_blank"
+                            title="b-Bilibili"
+                        >
+                            
+                            
+                                <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1715265477396" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2596" width="32" height="32" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M306.005333 117.632L444.330667 256h135.296l138.368-138.325333a42.666667 42.666667 0 0 1 60.373333 60.373333L700.330667 256H789.333333A149.333333 149.333333 0 0 1 938.666667 405.333333v341.333334a149.333333 149.333333 0 0 1-149.333334 149.333333h-554.666666A149.333333 149.333333 0 0 1 85.333333 746.666667v-341.333334A149.333333 149.333333 0 0 1 234.666667 256h88.96L245.632 177.962667a42.666667 42.666667 0 0 1 60.373333-60.373334zM789.333333 341.333333h-554.666666a64 64 0 0 0-63.701334 57.856L170.666667 405.333333v341.333334a64 64 0 0 0 57.856 63.701333L234.666667 810.666667h554.666666a64 64 0 0 0 63.701334-57.856L853.333333 746.666667v-341.333334A64 64 0 0 0 789.333333 341.333333zM341.333333 469.333333a42.666667 42.666667 0 0 1 42.666667 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666666-42.666667z m341.333334 0a42.666667 42.666667 0 0 1 42.666666 42.666667v85.333333a42.666667 42.666667 0 0 1-85.333333 0v-85.333333a42.666667 42.666667 0 0 1 42.666667-42.666667z" p-id="2597" fill="#515151"></path></svg>
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a 
+                            href='https://www.zhihu.com/people/huang-ming-yuan-14'
+                            target="_blank"
+                            title="c-Zhihu"
+                        >
+                            
+                            
+                                <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1715265526129" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6586" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32"><path d="M526.677333 766.421333l-72.021333 45.824-90.922667-142.933333c-18.773333 59.818667-50.005333 113.706667-91.264 163.2-17.152 20.608-34.986667 39.168-55.509333 58.666667-6.613333 6.272-33.066667 30.592-37.461333 34.986666l-60.330667-60.330666c5.930667-5.930667 33.578667-31.36 39.04-36.522667 18.346667-17.408 33.92-33.706667 48.725333-51.456 54.016-64.768 86.613333-136.96 91.178667-223.189333H128v-85.333334h170.666667V298.666667h-37.034667c-29.397333 54.016-66.474667 94.805333-111.701333 121.898666L106.069333 347.434667c59.52-35.754667 103.466667-111.104 129.621334-228.693334l83.285333 18.517334c-5.973333 27.008-12.928 52.352-20.864 76.074666H490.666667v85.333334H384v170.666666h106.666667v85.333334H391.893333l134.784 211.754666z m163.754667-2.986666L738.048 725.333333H810.666667V298.666667h-170.666667v426.666666h31.402667l19.029333 38.101334zM554.666667 213.333333h341.333333v597.333334h-128l-106.666667 85.333333-42.666666-85.333333H554.666667V213.333333z" p-id="6587" fill="#515151"></path></svg>
+                            
+                        </a>
+                    </li>
+                
+            </ol></header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about-me/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>friends</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+<main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/unity/" >
+                Unity
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/2024/unity%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">Unity内存管理</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        记录第一次部署博客以及使用主题遇到的障碍
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 21, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-words">
+                    3845字
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><a class="link" href="https://www.bilibili.com/video/BV1aJ411t7N6/"  target="_blank" rel="noopener"
+    >https://www.bilibili.com/video/BV1aJ411t7N6/</a></p>
+<p><a class="link" href="https://www.bilibili.com/read/cv3260881/"  target="_blank" rel="noopener"
+    >https://www.bilibili.com/read/cv3260881/</a> GC文章翻译（第三方）</p>
+<h3 id="物理内存">物理内存</h3>
+<p>CPU的内存读取其实很慢，每次都会访问CPU中的Shared Cache再去内存找，也就是核心自己的内存。
+台式设备和移动设备内存架构差异大：没有独显，没有显卡，CPU板上面积更小，缓存级数更少，大小更小。
+所以有时候Android的报错溢出不是内存，是显存爆炸了。</p>
+<h3 id="虚拟内存">虚拟内存</h3>
+<p>内存交换（放到硬盘上的内存）移动设备的IO也很慢，移动设备的内存交换性能也有消耗，硬盘读写寿命也更少。
+iOS可以进行内存压缩，但是Android没有（）
+iOS能把不用的程序占用的内存可以先压缩，也是存在内存里面。</p>
+<h3 id="内存寻址范围">内存寻址范围</h3>
+<p>32位和64位讲的是计算器运算位数而不是MCU位数，MemoryControlUnit。</p>
+<h3 id="android内存管理">Android内存管理</h3>
+<p>Android基于Linux，4K一个Page，Page是最基本的内存单位
+内存杀手 - Low Memory Killer</p>
+<p>4K Per page
+回收和分配都是以page为单位
+用户态和内核态区分。内核态内存，用户态是严格不许访问的。</p>
+<p>AKA Lmk  - low memory killer
+按照软件优先度杀软件，按理来说可以把Wifi功能都给你杀了。
+App原地重启都有可能。壁纸都给你杀掉。然后你手机就重启了。</p>
+<h3 id="内存指标">内存指标</h3>
+<p>Resident Set Size（RSS）
+当前APP调用的所有内存，RSS算上所有公共库的内存，也就是你的插件也算在你的APP的PSS。</p>
+<p>Proportional Set Size（PSS）
+如果公共库有其他APP用，那就是平均分到每个APP上。</p>
+<p>Unique Set Size（USS）
+USS是只有你自己用的，纯粹只有你自己申请的。</p>
+<p>例子：Procrank
+可以列出所有内存使用信息。
+如果PSS很高，USS很低，那就很可能你是被背锅了。一般平台用的是PSS检查。</p>
+<h3 id="unity内存管理">Unity内存管理</h3>
+<p>Unity是C++引擎，底层代码完全由C++所写，每一行。
+通过Wrapper提供给用户API。所以所有API都是在[.Bindings]里面放的。
+用户代码仍会转换为Cpp代码(il2cpp)
+VM仍然存在。</p>
+<p>用il2cpp之后，几乎没有纯正的C#在跑。有了VM跨平台会更加方便。</p>
+<p>按分配方式分为
+NativeMemory和ManagedMemory，在Editor和Runtime是不同的。
+不同不只是说，统计数据不一样，是分配方式都不一样。</p>
+<p>Asset在Runtime不加载不放进内存，在Editor会全部加载。（演讲者：巨型项目见过加载一礼拜的）
+2019.3推出AssetPipeline2.0，会加载基础的，后面的拓展的才会加载，详细可以自己搜搜。</p>
+<p>Unity内存按照管理者可以分为：<strong>引擎管理内存</strong>、<strong>用户管理内存</strong></p>
+<h4 id="引擎内存">引擎内存</h4>
+<p>引擎自己调用请求用的，一般开发者不需要触碰。</p>
+<h4 id="用户管理内存">用户管理内存</h4>
+<p>用户写的寄的代码就会导致很容易爆炸，确切需要关心的。</p>
+<p>Unity检测不到的内存：用户分配的native内存，比如用户自己写的C++插件，这个Unity检查不到，还有Lua，Lua是自己管理的。</p>
+<h3 id="unity-native-memory管理">Unity Native Memory管理</h3>
+<p>Allocator与memory lable，Unity重载了几乎所有的内存分配符，比如alloc或者new。所以每个申请内存的操作都需要一个额外的&quot;memory lable&quot;的参数。标记着申请的内存应该放到哪一块内存池里面。
+Allocator会根据memory lable分配到对应的池，每个池单独跟踪。
+不明白（?_?）</p>
+<h4 id="最佳实践">最佳实践</h4>
+<h5 id="scene">Scene</h5>
+<p>C++引擎，所有实体都会反应在C++里面。不会反应在托管堆。
+我们构建一个GO的时候，底层会建立一个到多个的GO来存储这个GO的信息，所以场景中存在多个GO的时候，Native内存就会显著上升。
+很多UnityNative内存大量生成的时候，去检查Scene，经常就是这个问题。</p>
+<h5 id="audio">Audio</h5>
+<p>DSP buffer，是可以设置几档位的，是声音的缓冲。
+填充太大了，声音大小没那么大，就会延迟。
+如果太小了，会经常向CPU发请求，导致CPU压力上升。</p>
+<h5 id="forcetomono">ForceToMono</h5>
+<p>音效师为了声音效果，将声音设置为双通道，但很多游戏音效实际是单声道也没有任何影响的（比如UI音效）。意味着一个1m的声音变成了2m，不仅影响包体还影响内存。
+强制单声道。</p>
+<h5 id="format">Format</h5>
+<p>不同平台会有不同的Format支持，比如ios一般会推荐MP3,安卓hrbrs？这是什么？猜测是Vorbis（Ogg，Mkv）。
+对于MP3，ios是有硬件支持的，速度会更好（Android没有）</p>
+<h5 id="compression-format">Compression Format</h5>
+<p>音频在游戏中是压缩的还是怎么样。</p>
+<h5 id="code-size">Code Size</h5>
+<p>模板泛型乱用会导致影响打包速度以及Code Size，比如一个模板函数有4、5个泛型参数，结果导出一个Cpp 25m。
+所有Class和template，最后都会展开，如果你一直排列组合，那么最后就会得到所有的排列组合，不重复。代码是一样的，但是类型不一样。IL2CPP就会给你展开。</p>
+<h5 id="assetbundle">AssetBundle</h5>
+<h6 id="typetree">TypeTree</h6>
+<p>当前版本用到了哪些变量和对应数据类型，反序列化就根据TypeTree记录的内容。
+没有就用默认值序列化。Build AssetBundle，当你确认同一个版本的Unity版本打出来的时候，TypeTree完全可以关掉，内存减少，包大小减少，build和运行时会变快。
+每次序列化的时候，如果发现需要TypeTree序列化的时候，要序列化两次，先序列化TypeTree再序列化本体。</p>
+<h6 id="lz4">Lz4</h6>
+<p>Unity主推，效率快，压缩比率比Lzma差30%，速度快10倍左右。</p>
+<h6 id="lzma">Lzma</h6>
+<p>基本不用，解压和读取速度都慢，而且会占用大量内存，它不是用什么解压，而是全解压。chunkbase。Lzma不基于ChunkBase（那Lz4呢？），基于ChunkBase的访问旧的资源可以引用缓存减少内存消耗。</p>
+<h6 id="size--count">Size &amp; count</h6>
+<p>一个Ab包多大。
+AB包基本都分两部分，头文件和实际文件。如果你每个资源都打一个包，那你就多了很多没用的头文件了。
+官方推荐1m-2m一个AssetBundle，现在5g网络好很多就可以放宽考虑。</p>
+<h5 id="resources文件夹">Resources文件夹</h5>
+<p>这个文件夹在打包的时候会生成一个R-B Tree，红黑树，帮助resources检索资源，如果Resources文件夹很大，你得RBTree就很大，会持续存在内存之中，从App打开就加载，这个红黑树没加载完游戏不会启动。
+基本只在Debug的时候用。</p>
+<h5 id="texture">Texture</h5>
+<h6 id="upload-buffer">upload buffer</h6>
+<p>填满多大向GPU发送push一次</p>
+<h6 id="rw-read--write">r/w: read / write</h6>
+<p>Texture没必要就不需要开。
+正常流程Texture，读进内存，解析完了，放到uploadbuffer上传了就会从内存delete掉。
+你开了r/w就不会卸载了，就在你显存和内存都有一份。</p>
+<h6 id="mipmaps">MipMaps</h6>
+<p>UI没必要开。</p>
+<h5 id="mesh">Mesh</h5>
+<h6 id="rw">r/w</h6>
+<p>同上</p>
+<h6 id="compression">compression</h6>
+<p>有些版本开了不如不开，这个需要自己注意。</p>
+<h5 id="assets">Assets</h5>
+<h3 id="unity-managed-memory">Unity Managed Memory</h3>
+<p>Unity托管内存</p>
+<h4 id="vm内存池">VM内存池</h4>
+<p>Mono虚拟机的内存池</p>
+<h5 id="vm会返还内存给os吗">VM会返还内存给OS吗？</h5>
+<p>会</p>
+<h5 id="返还条件">返还条件</h5>
+<p>当一个block连续6次GC没有被访问到，才会返还给系统，这种情况基本看不到，尤其是MonoRuntime的时候，ILRuntime可能稍微还会多一点机会。</p>
+<h4 id="gc机制">GC机制</h4>
+<p>GC不会把内存返还给系统
+GC是一种机制，而这种机制有很多种不同的具体实现。
+Untiy在用的叫Boehm-Demers-Weiser：<a class="link" href="https://www.hboehm.info/gc/"  target="_blank" rel="noopener"
+    >相位裂缝</a></p>
+<p>Unity在用的Boehm是不分代的，有些GC会划分大中小块，还有不常用块，Unity没有，纯堆一起（快），而且它是非压缩式的GC，不会对内存进行重新调整位置。</p>
+<h5 id="下一代gc">下一代GC</h5>
+<h6 id="incremental-gc渐进式gc">Incremental GC（渐进式GC）</h6>
+<p>解决的是主线程卡顿的问题，现在的GC会暂停主线程，遍历所有的GC Memory，决定多少被GC掉。
+IGC分帧做了，比如分成10帧去做，总体时间没变，但是可以改善卡顿情况。</p>
+<h6 id="sgen或者升级boehm">SGen或者升级Boehm</h6>
+<p>SGen很先进，分代的。策略速度快</p>
+<h6 id="il2cpp">IL2CPP</h6>
+<p>Unity重新写的，升级版的Boehm</p>
+<h5 id="gc机制考量">GC机制考量</h5>
+<p>Throughput（回收能力）
+一次回收回收多少内存</p>
+<p>PauseTimes（暂停时长）
+进行内存回收的时候对主线程的影响多大</p>
+<p>Fragmentation（碎片化）
+回收内存之后，会对整体内存池碎片化贡献量</p>
+<p>MutatorOverhead（额外消耗）
+统计，标记之类的消耗</p>
+<p>Scalability（可拓展性）
+扩展到多核多线程会不会有bug</p>
+<p>Protability（可移植性）
+不同平台是否可以使用</p>
+<h5 id="内存碎片化">内存碎片化</h5>
+<p>就是因为不会挤掉间隔，间隔不够大就无法分配了。
+这就被严重碎片化了。
+如果进行高密度内存加载操作，先加载大内存，再加载小内存。
+这部分内存不算内存泄漏，这叫Zombie Memory，无用内存，没有释放。它没有丢失一直都在，但是你也不用，它就占着这个位置。</p>
+<h4 id="最佳实践-1">最佳实践</h4>
+<p>Don&rsquo;t Null it，but Destroy it（用Destroy而不是设null）
+Class VS Struct看雨松
+Pool In Pool高频使用的小部件，自己创建内存池，自己重用
+Closures and anonymous methods（闭包和匿名函数）
+所有的匿名和闭包最后会被IL生成翻译全都是new一个class，实际是一个class
+里面所有函数和变量，里面所有new的东西都要占内存。</p>
+<p>Coroutines协程，只要没释放掉，所用的内存会一直存在，所有的变量。局部变量也是。用就生成，不用就去除掉。协程不是线程</p>
+<p>Configurations（配置表）</p>
+<p>Singleton慎用，C++年代就是万恶资源，扔进去就不管，全在内存里。</p>
+<p>SetActive有GC，SetActive实际上会干很多工作，可以看源代码，有很多初始化的工作，比如子UI的递归情况。当你UISetActive很卡的时候，可以试试把UI放到屏幕外，这样就没有SetActive了。</p>
+<p>Unity内使用TPL，跟协程比起来需要注意的地方。
+IO返回倒是可以用异步做，但是协程会轮询。如果轮询没什么消耗没关系，有问题就异步。</p>
+<p>Unity基本已经停止mono的支持了，以后会转ilruntime，</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/unity/">Unity</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/2022/unity-mirror%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-tank/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity-Mirror学习笔记-Tank</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/2022/unity-loadsceneasync%E5%87%BA%E7%8E%B0%E7%9A%84%E5%8D%8F%E7%A8%8B%E9%97%AE%E9%A2%98/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Unity-LoadSceneAsync出现的协程问题</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+  
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+
+<script>
+(function(u, c) {
+  var d = document, t = 'script', o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+  o.src = u;
+  if (c) { o.addEventListener('load', function(e) { c(e); }); }
+  s.parentNode.insertBefore(o, s);
+})('//cdn.bootcss.com/pangu/3.3.0/pangu.min.js', function() {
+  pangu.spacingPage();
+});
+</script>
+
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2024 <a href="https://stack-theme-mod.vercel.app/">Example Site</a>·<i class="fas fa-bell"></i> <a id="days">0</a>Days<br>
+      共书写了9.4k字·共 5篇文章</br><span><p>
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a><br />
+         <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">© Licensed Under CC BY-NC-SA 4.0</a>
+    </section>
+
+<script>
+var s1 = '2022-02-12';
+s1 = new Date(s1.replace(/-/g, "/"));
+s2 = new Date();
+var days = s2.getTime() - s1.getTime();
+var number_of_days = parseInt(days / (1000 * 60 * 60 * 24));
+document.getElementById('days').innerHTML = number_of_days;
+</script>
+    
+</footer>
+
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+    
+    
+    <aside class="sidebar right-sidebar sticky">
+        
+            <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+        
+            
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#物理内存">物理内存</a></li>
+        <li><a href="#虚拟内存">虚拟内存</a></li>
+        <li><a href="#内存寻址范围">内存寻址范围</a></li>
+        <li><a href="#android内存管理">Android内存管理</a></li>
+        <li><a href="#内存指标">内存指标</a></li>
+        <li><a href="#unity内存管理">Unity内存管理</a>
+          <ol>
+            <li><a href="#引擎内存">引擎内存</a></li>
+            <li><a href="#用户管理内存">用户管理内存</a></li>
+          </ol>
+        </li>
+        <li><a href="#unity-native-memory管理">Unity Native Memory管理</a>
+          <ol>
+            <li><a href="#最佳实践">最佳实践</a></li>
+          </ol>
+        </li>
+        <li><a href="#unity-managed-memory">Unity Managed Memory</a>
+          <ol>
+            <li><a href="#vm内存池">VM内存池</a></li>
+            <li><a href="#gc机制">GC机制</a></li>
+            <li><a href="#最佳实践-1">最佳实践</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+        
+            <section class="widget categories">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+  
+        </div> 
+        <h2 class="widget-title section-title">Categories</h2>
+    <div class="widget-categories--list">
+<div class="widget">
+    <h3 class="widget-title"> </h3>
+    <div class="widget-body">
+        <div class="category-list">
+            <div class="category-list-item"><a href="http://localhost:1313/categories/unity/" class="category-list-link">unity<span class="category-list-count">3</a>
+            </span></div>
+            <div class="category-list-item"><a href="http://localhost:1313/categories/%E4%BA%BA%E7%94%9F%E7%BB%8F%E5%8E%86/" class="category-list-link">人生经历<span class="category-list-count">1</a>
+            </span></div>
+            <div class="category-list-item"><a href="http://localhost:1313/categories/%E5%8D%9A%E5%AE%A2/" class="category-list-link">博客<span class="category-list-count">1</a>
+            </span></div>
+        </div>
+    </div>
+</div>
+    </div>
+    </section>
+        
+            <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Archives</h2>
+
+        
+        
+        
+        
+        
+        <div class="widget-archive--list">
+            <div class="archives-year">
+                    <a href="/archives/#2024">
+                        
+                            <span class="year">2024</span>
+                            <span class="count">3</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2022">
+                        
+                            <span class="year">2022</span>
+                            <span class="count">2</span>
+                        
+                    </a> 
+                </div>
+            
+        </div>
+    </section>
+        
+            <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/unity/" class="font_size_3">
+                Unity
+            </a>
+        
+            <a href="/tags/github-pages/" class="font_size_1">
+                Github-Pages
+            </a>
+        
+            <a href="/tags/hugo/" class="font_size_1">
+                Hugo
+            </a>
+        
+            <a href="/tags/mirror%E5%B1%80%E5%9F%9F%E7%BD%91/" class="font_size_1">
+                Mirror局域网
+            </a>
+        
+            <a href="/tags/%E4%BA%BA%E7%94%9F%E7%BB%8F%E5%8E%86/" class="font_size_1">
+                人生经历
+            </a>
+        
+            <a href="/tags/%E8%B8%A9%E5%9D%91/" class="font_size_1">
+                踩坑
+            </a>
+        
+    </div>
+</section>
+        
+    </aside>
+
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
