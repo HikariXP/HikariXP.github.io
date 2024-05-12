@@ -44,6 +44,8 @@ image = "pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg"
 
 # 遇到的问题
 
+## 1、笔记无法加载
+
 倒是确实遇到了问题，比如这套主题，需要Markdown笔记具有一些前置信息去提供给主题去显示。
 
 ```
@@ -66,3 +68,10 @@ image = "pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg"
 ```
 第一次用的时候不知道，导致觉得很奇怪，为什么我明明放了笔记却不显示呢？明明上一个主题都可以的。
 
+## 2、无法部署
+
+因为是直接套模板，没什么前端知识储备（就是什么都不懂）。第一次替换旧主题的并且提交的时候出现了错误，因为config.yaml的baseurl没有修改为正确的地址。改了就可以了。报错内容是这样的:
+
+```
+Environment URL '' is not a valid http(s) URL, so it will not be shown as a link in the workflow graph.
+```
