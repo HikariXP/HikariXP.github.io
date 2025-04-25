@@ -1,18 +1,18 @@
-+++
-author = "CharSui"
-title = "Unity-Mirror学习笔记-Tank"
-date = "2022-10-18"
-description = "其实就是看了一下示例场景Tank的实现方式,通过Mirror内置的例子来学习其用法，此为笔记。"
-tags = [
-	"Unity","Mirror局域网"
-]
-categories = [
-"Unity"
-]
-series = ["Themes Guide"]
-aliases = ["migrate-from-jekyl"]
-
-+++
+---
+author: "CharSui"
+title: "Unity-Mirror学习笔记-Tank"
+date: "2022-10-18"
+description: "其实就是看了一下示例场景Tank的实现方式,通过Mirror内置的例子来学习其用法，此为笔记。"
+tags:
+  - "Unity"
+  - "Mirror局域网"
+categories:
+  - "Unity"
+series:
+  - "Themes Guide"
+aliases:
+  - "migrate-from-jekyl"
+---
 
 
 

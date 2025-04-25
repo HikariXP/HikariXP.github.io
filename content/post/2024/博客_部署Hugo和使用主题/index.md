@@ -1,19 +1,19 @@
-+++
-author = "CharSui"
-title = "部署Hugo和使用Stack改版主题"
-date = "2024-05-09"
-description = "记录第一次部署博客以及使用主题遇到的障碍"
-tags = [
-	"Hugo","Github-Pages"
-]
-categories = [
-"博客"
-]
-series = ["Themes Guide"]
-aliases = ["migrate-from-jekyl"]
-image = "pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg"
-
-+++
+---
+author: "CharSui"
+title: "部署Hugo和使用Stack改版主题"
+date: "2024-05-09"
+description: "记录第一次部署博客以及使用主题遇到的障碍"
+tags:
+  - "Hugo"
+  - "Github-Pages"
+categories:
+  - "博客"
+series:
+  - "Themes Guide"
+aliases:
+  - "migrate-from-jekyl"
+image: "pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg"
+---
 
 突然兴致而来，和同事小武聊起来博客就谈到了Hexo，随后和基友毛聊起来又谈到了Hugo。
 没有经过什么详细的调查，单纯只是想找一个方便的博客框架，有不错的外观就行，将精力集中在写笔记留档上，于是随缘用上了Hugo。
@@ -67,6 +67,8 @@ image = "pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg"
 +++
 ```
 第一次用的时候不知道，导致觉得很奇怪，为什么我明明放了笔记却不显示呢？明明上一个主题都可以的。
+
+但是我本地写笔记已经习惯使用Obsidian，Obsidian并不支持读取TOML格式，所以让DS把他们都转成了YAML。
 
 ## 2、无法部署
 

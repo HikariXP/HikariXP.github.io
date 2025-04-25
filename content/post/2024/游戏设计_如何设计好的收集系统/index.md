@@ -1,18 +1,17 @@
-+++
-author = "CharSui"
-title = "如何设计好的收集系统"
-date = "2023-06-14"
-description = "记录第一次部署博客以及使用主题遇到的障碍"
-tags = [
-	"游戏设计"
-]
-categories = [
-"游戏设计"
-]
-series = ["Themes Guide"]
-aliases = ["migrate-from-jekyl"]
-
-+++
+---
+author: "CharSui"
+title: "如何设计好的收集系统"
+date: "2023-06-14"
+description: "记录第一次部署博客以及使用主题遇到的障碍"
+tags:
+  - "游戏设计"
+categories:
+  - "游戏设计"
+series:
+  - "Themes Guide"
+aliases:
+  - "migrate-from-jekyl"
+---
 
 围绕收集系统而言，想让玩家收集就需要激励他们。而从激励角度，有分**外部激励**和**内部激励**。
 

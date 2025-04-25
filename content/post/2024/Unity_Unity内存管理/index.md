@@ -1,17 +1,18 @@
-+++
-author = "CharSui"
-title = "Unity内存管理"
-date = "2024-04-21"
-description = "记录第一次部署博客以及使用主题遇到的障碍"
-tags = [
-	"Unity"
-]
-categories = [
-"Unity","视频笔记"
-]
-series = ["Themes Guide"]
-aliases = ["migrate-from-jekyl"]
-+++
+---
+author: "CharSui"
+title: "Unity内存管理"
+date: "2024-04-21"
+description: "Unity游戏开发中的内存优化策略与常见问题分析"
+tags:
+  - "Unity"
+categories:
+  - "Unity"
+  - "视频笔记"
+series:
+  - "Themes Guide"
+aliases:
+  - "migrate-from-jekyl"
+---
 
 
 
