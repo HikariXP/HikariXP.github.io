@@ -1,17 +1,17 @@
 ---
-author: "CharSui"
-title: "Unity内存管理"
-date: "2024-04-21"
-description: "Unity游戏开发中的内存优化策略与常见问题分析"
+author: CharSui
+title: Unity内存管理
+date: 2024-04-21
+description: Unity游戏开发中的内存优化策略与常见问题分析
 tags:
-  - "Unity"
+  - Unity
+  - 性能优化
 categories:
-  - "Unity"
-  - "视频笔记"
+  - 视频笔记
 series:
-  - "Themes Guide"
+  - Themes Guide
 aliases:
-  - "migrate-from-jekyl"
+  - migrate-from-jekyl
 ---
 
 

@@ -1,16 +1,16 @@
 ---
-author: "CharSui"
-title: "如何设计好的收集系统"
-date: "2023-06-14"
-description: "记录第一次部署博客以及使用主题遇到的障碍"
+author: CharSui
+title: 如何设计好的收集系统
+date: 2023-06-14
+description: 观看有感
 tags:
-  - "游戏设计"
+  - 游戏设计
 categories:
-  - "游戏设计"
+  - 视频笔记
 series:
-  - "Themes Guide"
+  - Themes Guide
 aliases:
-  - "migrate-from-jekyl"
+  - migrate-from-jekyl
 ---
 
 围绕收集系统而言，想让玩家收集就需要激励他们。而从激励角度，有分**外部激励**和**内部激励**。

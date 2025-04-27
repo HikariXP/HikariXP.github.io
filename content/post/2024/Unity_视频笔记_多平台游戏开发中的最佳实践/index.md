@@ -1,18 +1,17 @@
 ---
-author: "CharSui"
-title: "Unity多平台开发注意事项"
-date: "2024-04-21"
-description: "Unity跨平台开发中的关键问题和解决方案总结"
+author: CharSui
+title: Unity多平台开发注意事项
+date: 2024-04-21
+description: Unity跨平台开发中的关键问题和解决方案总结
 tags:
-  - "Unity"
-  - "多平台"
+  - Unity
+  - 多平台
 categories:
-  - "Unity"
-  - "视频笔记"
+  - 视频笔记
 series:
-  - "Themes Guide"
+  - Themes Guide
 aliases:
-  - "migrate-from-jekyl"
+  - migrate-from-jekyl
 ---
 
 最好使用LTS进行开发。

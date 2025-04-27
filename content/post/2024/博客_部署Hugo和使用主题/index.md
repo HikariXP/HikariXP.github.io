@@ -1,18 +1,18 @@
 ---
-author: "CharSui"
-title: "部署Hugo和使用Stack改版主题"
-date: "2024-05-09"
-description: "记录第一次部署博客以及使用主题遇到的障碍"
+author: CharSui
+title: 部署Hugo和使用Stack改版主题
+date: 2024-05-09
+description: 记录第一次部署博客以及使用主题遇到的障碍
 tags:
-  - "Hugo"
-  - "Github-Pages"
+  - Hugo
+  - Github-Pages
 categories:
-  - "博客"
+  - 技术
 series:
-  - "Themes Guide"
+  - Themes Guide
 aliases:
-  - "migrate-from-jekyl"
-image: "pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg"
+  - migrate-from-jekyl
+image: pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg
 ---
 
 突然兴致而来，和同事小武聊起来博客就谈到了Hexo，随后和基友毛聊起来又谈到了Hugo。

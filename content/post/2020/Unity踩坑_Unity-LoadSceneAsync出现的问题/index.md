@@ -1,17 +1,17 @@
 ---
-author: "CharSui"
-title: "Unity-LoadSceneAsync出现的协程问题"
-date: "2022-09-20"
-description: "需要缓一帧"
+author: CharSui
+title: Unity-LoadSceneAsync出现的协程问题
+date: 2022-09-20
+description: 需要缓一帧
 tags:
-  - "Unity"
-  - "踩坑"
+  - Unity
+  - 踩坑
 categories:
-  - "Unity"
+  - 技术
 series:
-  - "Themes Guide"
+  - Themes Guide
 aliases:
-  - "migrate-from-jekyl"
+  - migrate-from-jekyl
 ---
 
 ## 出现的问题
