@@ -48,7 +48,8 @@ image: cover.png
 - Addressable生成热更资源受行尾因素和编码格式影响
 	- Addressable打热更包会做一次CheckContentUpdate，由于项目早期没有对文件的行尾做约束，导致同样的文件在不同电脑上行尾不一致，Unity算出来的hash不一样就认为有变更了。可以采用.gitattributes去约束将所有可以文本编辑的内容都以一个统一的行尾解决，UTF 8和UTF 8 BOM也不一样的喔。
 - Addressable打更新包会错误移除一些本地需要使用的包体
-	- 构建UpdateBuild之前最好将Library里面Addressable打的本地包先备份移除，对比过一些不相关的内容也被移除掉了，即使runtime要用。
+	- ~~构建UpdateBuild之前最好将Library里面Addressable打的本地包先备份移除，对比过一些不相关的内容也被移除掉了，即使runtime要用。~~
+	- 实际上是Addressable的组问题，具体可以去Addressable文档看组配置相关的。有两个选项 {远程、本地} 和 {替换更新、增量更新}，看似有四种选项实际只有两种有效，当你设置为【本地、替换更新】的时候就会爆炸。也就是Local + 不勾选Prevent Update。
 - Addressable的批量资源加载对于使用不同的MergeMode会走向完全不一样的逻辑
 	- 从1.18-1.21版本都无法加载任何贴图，源码中底层是有两套set的，Texture2D和Sprite，两个Set都能通过这个Key获得资源所以判断为复数类型，无法返回资源。![[920ed6c0acd5be09cdb3717a97e53ede_MD5.png]]
 - 闰年需要特殊处理，泰国的年历有一种特殊的算法，公历年+543=佛历年，从微软的API获取的本地时间会有这种情况。
