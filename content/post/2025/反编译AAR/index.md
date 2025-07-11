@@ -5,9 +5,10 @@ date: 2025-07-11
 description: 项目需求要更新谷歌支付库，由于使用的是第三方插件，所以需要将该插件反编译修改后重新导出aar
 tags:
   - 多平台
-categories:
-  - 工作相关
   - Unity
+categories:
+  - Unity
+  - 技术
 series:
   - Themes Guide
 aliases:
@@ -66,23 +67,23 @@ public void DoSomething (value1, value2) -> { //Your Code }
 
 # 2、找引用的第三方库
 也是刚刚那张图，你可以看到下面有很多引用，比如`tpns-baseapi-sdk-1.3.6.1`
-![[2.png]]
+![](2.png)
 
 需要找全引用了什么库，不过这里有一个很快捷的方法可以找到，就是直接解压aar，从libs里面看看有什么库。
-![[3.png]]
+![](3.png)
 
 # 3、新建项目并新建模块
 我们的实际目的是模块。不过因为我个人对AndroidStudio的使用并不熟悉，不知道是否可以直接创建单模块的项目，目前创建的都是一个Android项目里面有个模块这样的情况。
 
 假设你已经创建完了，随便创就完事了，然后这时候新建一个模块，保守起见我们按照解包时候源码里面的包名来填写：`com.tencent.unity.push`
-![[4.png]]
+![](4.png)
 ![[5.png]]
 
 然后将刚刚反编译获得的四个源码，按照对应的层级放进Module的文件夹里。
 libs文件夹就放对应上面找到的第三方库的升级版就行。比如写这个文章的时候获取到的是`1.4.4.3`。
 
 最后libs和src文件夹应该长这样
-![[6.png]]
+![](6.png)
 # 4、补充依赖
 只是将依赖库放入libs文件夹是不够的，还得连起来。
 Android对依赖有几种关系：
@@ -101,8 +102,9 @@ Android对依赖有几种关系：
 > unity-classes.jar可以从Editor文件夹获取，比如/2019.4.32f1/Editor/Data/PlaybackEngines/AndroidPlayer/Variations/mono/Release/Classes/classes.jar
 
 解法上参考了Stackoverflow上GuneyOzsan的回答。这里是文章的传送门：
-[StackOverflow - cannot find unityplayer activity](https://stackoverflow.com/questions/61865739/cannot-find-the-unityplayeractivity-class-inside-com-unity3d-player)
-[UnityDiscussions - 导入Unity库到Android](https://discussions.unity.com/t/integration-unity-as-a-library-in-native-android-app-version-2/759734)
+- [StackOverflow - cannot find unityplayer activity](https://stackoverflow.com/questions/61865739/cannot-find-the-unityplayeractivity-class-inside-com-unity3d-player)  
+- [UnityDiscussions - 导入Unity库到Android](https://discussions.unity.com/t/integration-unity-as-a-library-in-native-android-app-version-2/759734)
+
 
 使用2019+的Unity导出有个AndroidStudio项目后，将其中unityLibrary那一部分作为一个新的Module接入。
 我在接入后也遇到问题，无论是在插件的build.gradle里面写了怎么导入untiy的jar，一个叫unity-classes.jar的文件，都显示代码无法`import com.unity3d.player`的内容。
@@ -146,10 +148,10 @@ dependencies {
 
 # 6、构建aar
 之后就直接构建这个插件就好了，要在project界面选中模块的build.gradle才有这个选项。
-![[7.png]]
+![](7.png)
 
 新版AndroidStudio也是选中模块的build.gradle，然后点这个打包aar
-![[8.png]]
+![](8.png)
 
 所有API等级都没变，基本就是更新库导致部分API的传参有变化。
 构建完去模块的文件夹的`build/outputs/aar`看有没有导出的aar即可。
