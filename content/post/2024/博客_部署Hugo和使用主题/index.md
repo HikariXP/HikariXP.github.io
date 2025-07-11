@@ -77,3 +77,8 @@ image = "pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg"
 ```
 Environment URL '' is not a valid http(s) URL, so it will not be shown as a link in the workflow graph.
 ```
+
+## 3、图片不显示
+后来写笔记的时候遇到了这个问题。
+不知道是不是这个Stack主题的问题，它没办法识别`[[]]`这种图片引用。
+然后这个应该时markdown的约束。如果改为`![]()`作为图片的引用，则不支持图片名字中有空格。
