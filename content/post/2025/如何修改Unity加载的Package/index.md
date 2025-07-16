@@ -28,7 +28,7 @@ image: cover.jpg
 
 而`Add package from disk...`是特例。官方相关位置的文档并没有指出可以通过此方式开发包体，但官方人员在论坛里回答了：[传送门](https://discussions.unity.com/t/how-to-develop-for-packager-environment/929541/3)
 
-![](content/post/2025/如何修改Unity加载的Package/1.png)
+![](1.png)
 
 Unity加载包体就看目标文件夹的package.json文件以及特定的子文件夹结构等信息，所以你只需要拿到package的原内容，就可以通过`Add package from disk...`的方式，将这些包加载并保留对其的修改。不过采用这种方式加载的包体似乎就没法获取来自远端的升级了。
 
@@ -38,7 +38,7 @@ Unity加载包体就看目标文件夹的package.json文件以及特定的子文
 顾名思义
 
 先去项目的Library找到包体的缓存
-![](content/post/2025/如何修改Unity加载的Package/2.png)
+![](2.png)
 
 复制出来，然后在PackageManager里移除这个包体，再通过`Add package from disk...`添加刚刚复制出来的包体的package.json即可。
 ## 2、修改清单
