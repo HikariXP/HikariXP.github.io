@@ -36,8 +36,14 @@ public void DoSomething value1, value2 -> { //Your Code }
 public void DoSomething (value1, value2) -> { //Your Code }
 ```
 
+目前经历下来，大部分情况下影响打包的元素如下：
+- Gradle版本
+- AGP版本
+- JDK版本
+- Maven库
+但AndroidStudio支持JDK、Gradle、AGP的下载，所以只要理清需要的版本，在设置里面找到对应的配置项，AndroidStudio就可以自动下载和管理。
 
-推送组件涉及到一个”引入Unity程序集“的步骤，所以就以我个人认为最麻烦的推送作为示例。
+> 推送组件涉及到一个”引入Unity程序集“的步骤，所以就以我个人认为最麻烦的推送作为示例。
 
 # 需求背景
 腾讯官方给的Unity的接入方案中用到的工具，版本已经非常落后，同时用旧版本的插件会有一个收集SSID的问题。
