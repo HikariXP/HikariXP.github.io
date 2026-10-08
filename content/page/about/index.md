@@ -1,5 +1,5 @@
 ---
-title: About Me
+title: 自我介绍
 description: 一个想开发游戏赚钱做大做强的傻逼
 date: '2019-02-28'
 aliases:
@@ -10,6 +10,7 @@ license: CC BY-NC-ND
 lastmod: '2020-10-09'
 menu:
     main: 
+        name: 自我介绍
         weight: -90
         params:
             icon: user
