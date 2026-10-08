@@ -1,0 +1,365 @@
+/* arkfield theme - signature styles
+   Ports the Typora arkfield look (grid paper, yellow accent bars,
+   keycap code, marker strong, tree TOC) onto the Stack layout. */
+
+/* Grid paper background for the whole page */
+body {
+    background-color: var(--ark-canvas);
+    background-image:
+        linear-gradient(rgba(25, 25, 25, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(25, 25, 25, 0.04) 1px, transparent 1px);
+    background-size: 5.5rem 5.5rem;
+}
+
+/* Selection highlight */
+::selection {
+    color: var(--ark-ink);
+    background: var(--ark-signal);
+}
+
+/* --- Cards: paper + square corners + hard border --- */
+.article-list article,
+.main-article,
+.widget--toc,
+.widget .widget-archive--list,
+.widget .widget-categories--list,
+#article-toolbar .back-home {
+    border: 1px solid var(--ark-rule);
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.article-list article:hover,
+.main-article:hover {
+    box-shadow: var(--shadow-l1);
+}
+
+/* --- Sidebar --- */
+.site-info {
+    .site-logo {
+        border-radius: 0;
+        box-shadow: none;
+        border: 1px solid var(--ark-ink);
+    }
+}
+
+.site-name {
+    font-family: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-weight: 700;
+}
+
+/* --- Article content: arkfield typography --- */
+.article-content {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        position: relative;
+        margin-left: 0;
+        padding-left: 1rem;
+        border-left: none;
+        font-family: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+        font-weight: 700;
+        line-height: 1.25;
+    }
+
+    h1 {
+        padding: 0 0 0.65rem 0;
+        font-size: 2.15rem;
+        letter-spacing: -0.025em;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ark-signal) 0 4rem, var(--ark-ink) 4rem);
+        }
+    }
+
+    h2 {
+        padding: 0 0 0.45rem 1rem;
+        font-size: 1.55rem;
+        letter-spacing: -0.015em;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0.4em auto auto 0;
+            width: 0.4rem;
+            height: 0.4rem;
+            background: var(--ark-ink);
+            box-shadow: 0.2rem 0.2rem 0 var(--ark-signal);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--ark-signal) 0 4rem, var(--ark-ink) 4rem);
+        }
+    }
+
+    h3 {
+        padding-left: 1rem;
+        font-size: 1.25rem;
+        box-shadow: inset 3px 0 var(--ark-signal);
+
+        &::after {
+            content: "";
+            display: block;
+            width: 2.5rem;
+            height: 2px;
+            margin-top: 0.3rem;
+            background: var(--ark-ink);
+        }
+    }
+
+    h4 {
+        font-size: 1.08rem;
+        box-shadow: inset 3px 0 var(--ark-ink);
+    }
+
+    h5 {
+        font-size: 1.08rem;
+        box-shadow: inset 2px 0 var(--ark-signal);
+    }
+
+    h6 {
+        font-size: 1.08rem;
+        box-shadow: inset 2px 0 var(--ark-ink);
+    }
+
+    /* Strong: marker highlight */
+    strong {
+        font-weight: 700;
+        background: linear-gradient(transparent 62%, rgba(255, 250, 0, 0.55) 62%);
+    }
+
+    /* Inline code: keycap style */
+    code {
+        padding: 0.1em 0.35em;
+        border: 1px solid var(--ark-ink);
+        border-bottom-width: 2px;
+        border-radius: 2px;
+        background: var(--ark-paper);
+        color: var(--ark-ink);
+    }
+
+    /* Blockquote: yellow left bar + top/bottom rules */
+    blockquote {
+        margin: 1.5em 0;
+        padding: 0.8rem 1rem;
+        border-left: 3px solid var(--ark-signal);
+        border-block: 1px solid var(--ark-rule);
+        background: rgba(255, 250, 0, 0.05);
+
+        p {
+            margin: 0.32em 0;
+        }
+
+        > :first-child {
+            margin-top: 0;
+        }
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    /* Divider: yellow -> ink bar */
+    hr {
+        width: 100%;
+        height: 1px;
+        margin: 2.25rem 0;
+        border: 0;
+        background: linear-gradient(90deg, var(--ark-signal) 0 2rem, var(--ark-ink) 2rem);
+        opacity: 1;
+    }
+
+    /* Tables: ink top border, zebra, yellow hover */
+    table {
+        border-collapse: collapse;
+
+        thead {
+            border-top: 2px solid var(--ark-ink);
+        }
+
+        th {
+            border-color: var(--ark-rule);
+            background: rgba(25, 25, 25, 0.05);
+            color: var(--ark-ink);
+            font-family: "Space Grotesk", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-weight: 700;
+        }
+
+        th,
+        td {
+            padding: 0.55rem 0.75rem;
+            border: 1px solid var(--ark-rule);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: rgba(25, 25, 25, 0.03);
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255, 250, 0, 0.16);
+        }
+    }
+
+    /* Code blocks: top yellow->ink gradient bar */
+    pre {
+        border: 1px solid var(--ark-rule);
+        border-top: 0;
+        border-radius: 0;
+        background:
+            linear-gradient(90deg, var(--ark-signal) 0 4rem, var(--ark-ink) 4rem) top / 100% 2px no-repeat,
+            var(--ark-paper);
+        color: var(--ark-ink);
+        padding: 1.2rem var(--card-padding) 0.5rem;
+
+        code {
+            border: none;
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+    }
+
+    /* Lists: custom markers */
+    ul > li::marker {
+        content: "●  ";
+        font-size: 0.5em;
+    }
+
+    ul ul > li::marker {
+        content: "○  ";
+        font-size: 0.6em;
+    }
+
+    ul ul ul > li::marker {
+        content: "■  ";
+        font-size: 0.6em;
+    }
+
+    /* Links */
+    a {
+        text-decoration: underline;
+        text-decoration-color: rgba(25, 25, 25, 0.42);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2em;
+
+        &:hover {
+            text-decoration-color: var(--ark-ink);
+            text-decoration-thickness: 2px;
+        }
+    }
+
+    /* TOC - tree style with box-drawing prefixes */
+    #TableOfContents {
+        li {
+            display: grid;
+            grid-template-columns: 1.2rem minmax(0, 1fr);
+            align-items: baseline;
+            margin: 0;
+            padding-block: 0.15rem;
+            border-bottom: 1px solid var(--ark-rule);
+
+            &:first-child::before {
+                content: "┌";
+            }
+
+            &:last-child {
+                border-bottom: 0;
+
+                &::before {
+                    content: "└";
+                }
+            }
+
+            &::before {
+                content: "├";
+                color: var(--ark-muted);
+                font-family: var(--code-font-family);
+                font-size: 0.78rem;
+            }
+
+            &:hover {
+                background: rgba(25, 25, 25, 0.05);
+                box-shadow: inset 3px 0 var(--ark-signal);
+            }
+
+            a {
+                display: block;
+                padding-left: 0.75rem;
+                color: var(--ark-ink);
+                text-decoration: none;
+                line-height: 1.5;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            ul,
+            ol {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                grid-column: 2;
+
+                li {
+                    padding-left: 0;
+                }
+            }
+        }
+
+        ol,
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+    }
+}
+
+/* Article meta header - keep the paper feel */
+.article-page .main-article {
+    .article-details {
+        padding-bottom: 0;
+    }
+}
+
+/* Footer */
+footer.site-footer {
+    &:before {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, var(--ark-signal) 0 2rem, var(--ark-ink) 2rem);
+    }
+
+    .copyright {
+        color: var(--ark-ink);
+    }
+}
+
+/* Scrollbar: square thumb */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ark-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+    border: 2px solid var(--ark-canvas);
+    border-radius: 0;
+    background: var(--ark-scrollbar);
+}

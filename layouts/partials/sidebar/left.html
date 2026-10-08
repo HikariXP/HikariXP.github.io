@@ -73,7 +73,7 @@
         </li>
         {{ end }}
 
-        {{ if (default false .Site.Params.colorScheme.toggle) }}
+        {{ if and (default false .Site.Params.colorScheme.toggle) (ne .Site.Params.themeStyle "arkfield") }}
             <li id="dark-mode-toggle">
                 {{ partial "helper/icon" "toggle-left" }}
                 {{ partial "helper/icon" "toggle-right" }}

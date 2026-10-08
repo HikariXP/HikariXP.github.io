@@ -23,6 +23,8 @@ permalinks:
     page: /:slug/
 
 params:
+    # Theme style variant: "stack" (default) or "arkfield" (paper light theme)
+    themeStyle: arkfield
     mainSections:
         - post
     featuredImageField: image

@@ -1,3 +1,7 @@
-{{ $sass := resources.Get "scss/style.scss" }}
+{{ $styleFile := "scss/style.scss" }}
+{{ if eq .Site.Params.themeStyle "arkfield" }}
+    {{ $styleFile = "scss/style-arkfield.scss" }}
+{{ end }}
+{{ $sass := resources.Get $styleFile }}
 {{ $style := $sass | resources.ToCSS | minify | resources.Fingerprint "sha256" }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}">

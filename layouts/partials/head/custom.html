@@ -1,3 +1,11 @@
+{{ if eq .Site.Params.themeStyle "arkfield" }}
+<style>
+    /* arkfield: light-only paper theme */
+    :root {
+        --article-font-family: var(--base-font-family);
+    }
+</style>
+{{ else }}
 <style>
     :root {
         --article-font-family: "Noto Serif SC", var(--base-font-family);
@@ -14,3 +22,4 @@
 		    document.head.appendChild(customFont);
 		}());
 </script>
+{{ end }}

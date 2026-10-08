@@ -1,0 +1,170 @@
+/* arkfield theme - variables & color mapping
+   Maps the Typora arkfield theme onto Stack's CSS variable system.
+   Light-only theme: no dark scheme block. */
+
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/arkfield/Inter-VF.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 100 900;
+}
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/arkfield/Inter-Italic-VF.woff2") format("woff2");
+    font-style: italic;
+    font-weight: 100 900;
+}
+@font-face {
+    font-family: "Space Grotesk";
+    src: url("/fonts/arkfield/SpaceGrotesk-VF.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300 700;
+}
+@font-face {
+    font-family: "Fira Code";
+    src: url("/fonts/arkfield/FiraCode-VF.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 300 700;
+}
+
+$defaultTagBackgrounds: #191919, #6843a5, #315b76, #8a4b00, #00754a;
+$defaultTagColors: #fafaf8, #fafaf8, #fafaf8, #fafaf8, #fafaf8;
+
+:root {
+    --ark-ink: #191919;
+    --ark-soft: #33332e;
+    --ark-muted: #55554e;
+    --ark-char: #8a8a82;
+    --ark-comment: #5f5f58;
+    --ark-blur: #9c9c95;
+    --ark-scrollbar: #8b8b84;
+    --ark-rule: #d7d7d1;
+    --ark-canvas: #f2f2f0;
+    --ark-paper: #fafaf8;
+    --ark-signal: #fffa00;
+    --ark-verified: #00754a;
+    --ark-info: #315b76;
+    --ark-important: #6843a5;
+    --ark-warning: #8a4b00;
+    --ark-error: #d92e16;
+}
+
+/*
+*   Global style
+*/
+:root {
+    @include respond(md) {
+        --main-top-padding: 35px;
+    }
+
+    @include respond(xl) {
+        --main-top-padding: 50px;
+    }
+
+    --body-background: var(--ark-canvas);
+
+    --accent-color: var(--ark-ink);
+    --accent-color-darker: var(--ark-soft);
+    --accent-color-text: var(--ark-paper);
+    --body-text-color: var(--ark-muted);
+
+    --tag-border-radius: 2px;
+
+    --section-separation: 40px;
+
+    --scrollbar-thumb: var(--ark-scrollbar);
+    --scrollbar-track: var(--ark-canvas);
+}
+
+/**
+*   Global font family
+*/
+:root {
+    --sys-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue";
+    --zh-font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Droid Sans Fallback";
+    --base-font-family: "Inter", "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --code-font-family: "Fira Code", "Sarasa Mono SC", Consolas, "Courier New", monospace;
+}
+
+/*
+*   Card style - paper look, square corners, no shadows
+*/
+:root {
+    --card-background: var(--ark-paper);
+    --card-background-selected: rgba(25, 25, 25, 0.14);
+    --card-text-color-main: var(--ark-ink);
+    --card-text-color-secondary: var(--ark-soft);
+    --card-text-color-tertiary: var(--ark-muted);
+    --card-separator-color: var(--ark-rule);
+
+    --card-border-radius: 0px;
+
+    --card-padding: 20px;
+
+    @include respond(md) {
+        --card-padding: 25px;
+    }
+
+    @include respond(xl) {
+        --card-padding: 30px;
+    }
+
+    --small-card-padding: 25px 20px;
+
+    @include respond(md) {
+        --small-card-padding: 25px;
+    }
+}
+
+/**
+*   Article content font settings
+*/
+:root {
+    --article-font-family: var(--base-font-family);
+    --article-font-size: 1.6rem;
+
+    @include respond(md) {
+        --article-font-size: 1.65rem;
+    }
+
+    --article-line-height: 1.68;
+}
+
+/*
+*   Article content style
+*/
+:root {
+    --blockquote-border-size: 3px;
+    --blockquote-background-color: rgba(255, 250, 0, 0.05);
+
+    --heading-border-size: 0px;
+
+    --link-background-color: 255, 250, 0;
+    --link-background-opacity: 0.55;
+    --link-background-opacity-hover: 0.75;
+
+    --pre-background-color: var(--ark-paper);
+    --pre-text-color: var(--ark-ink);
+
+    --code-background-color: var(--ark-paper);
+    --code-text-color: var(--ark-ink);
+
+    --table-border-color: var(--ark-rule);
+    --tr-even-background-color: rgba(25, 25, 25, 0.03);
+}
+
+/*
+*   Shadow style - flat hard offset shadows to mimic the arkfield aesthetic
+*/
+:root {
+    --shadow-l1: 3px 3px 0 rgba(25, 25, 25, 0.12);
+    --shadow-l2: 4px 4px 0 rgba(25, 25, 25, 0.14);
+    --shadow-l3: 5px 5px 0 rgba(25, 25, 25, 0.16);
+    --shadow-l4: 6px 6px 0 rgba(25, 25, 25, 0.18);
+}
+
+[data-scheme="light"] {
+    --pre-text-color: #272822;
+    --pre-background-color: #fafafa;
+    @import "partials/highlight/light.scss";
+}
